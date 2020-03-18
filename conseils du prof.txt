@@ -1,0 +1,43 @@
+@everyone Proposition pour premier code review:
+Ce n'est pas toujours simple de savoir si on est dans la bonne direction...
+Pour le savoir, le mieux reste encore de demander à quelqu'un (moi) de relire son code.
+
+Je vous propose donc ceci:
+
+Préparez dans votre repo git:
+|* routeur (index.php), .htaccess et structure mvc
+- dump de votre db avec création des tables + données de test (dans un fichier .sql)
+-> README avec la marche à suivre pour installer/configurer votre projet
+
+Au niveau du projet avoir au minimum:
+- une page d'accueil
+- une page qui affiche vos articles (ou une page qui affiche au moins une donnée provenant de votre db)
+
+Dès que vous avez ça (c'est jouable de l'avoir d'ici fin de semaine), m'envoyer un message privé pour me demander de vérifier votre code.
+Suite à ça je reviendrais vers vous pour vous dire si vous êtes ou non dans la bonne direction.
+
+Ne pas hésiter à me demander de revoir plusieurs fois votre code.
+Ca ne me dérange pas ! C'est mon job.
+
+Une fois que vous estimez avoir mis en place l'ensemble des limitations, revenez une dernière fois vers moi (mais pas le 25 avril... Ca sera un peu trop tard).
+
+-----------------------------
+
+@everyone Astuce suite à une discussion avec @Benoit VDH :
+Si vous comptez travailler avec des données envoyées en GET ET que vous utilisez un des routeurs du cours, vous risquez peut être de tomber sur un problème.
+L'information envoyée en get est reprise dans $_SERVER['REQUEST_URI']. Du coup, votre routeur va à un moment essayer de trouver un controller ayant comme nom "votrecontroller?ket=data.php".
+Pour éviter cela, il faut rajouter la ligne:
+$request = parse_url($request, PHP_URL_PATH);
+
+juste en dessous de la ligne:
+$request = str_replace(ROOT_PATH, "", $_SERVER['REQUEST_URI']);
+
+Ce qui donne:
+$request = str_replace(ROOT_PATH, "", $_SERVER['REQUEST_URI']);
+$request = parse_url($request, PHP_URL_PATH);
+
+La fonction parse_url (avec param PHP_URL_PATH) va sortir uniquement la requête (sans les infos envoyés en get).
+C'est cadeau ! 
+
+-----------------------------
+

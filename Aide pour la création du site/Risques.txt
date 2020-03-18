@@ -1,0 +1,19 @@
+Liste de risques :
+------------------
+- Création de compte de manière inadaptée (Robot), adresse mail fake, noms impossibles,...
+	* Empêcher certains mots clés dans une librairie.
+- Si pour un article, un élément est supprimé, indiquer les éléments qui risquent d’être impactés.
+	* 
+- Le client est-il capable de rédémarrer la machine en direct si le serveur plante ?
+- Le client a-t-il des connaissances pour un dépannage en ligne ?
+- En cas de panne d’électricité, que faire ?
+- Quel type de système de backup prévu ?
+- Mettre en sécurité les log et pass d’un client.
+	* Crypter les mots de passe des client (pour GDPR, ne faut-il pas crypter également les autres inforamtions des clients ?)
+
+
+
+Manière de répondre aux risques énoncés :
+-----------------------------------------
+- Analyse des réponses aux risques
+- Analyse de la solution la moins coûteuse et qui demande le moins de moyen pour faire tourner le programme. (NAS qui font serveur http, voir ce qu’il accepte au niveau technologie et investissement).

@@ -1,0 +1,5 @@
+Pour bien démarrer
+------------------
+
+Base de donnée créée avec sqlyog
+Pour charge la base de donnée, modifier la ligne _____________ dans le fichier ________.php

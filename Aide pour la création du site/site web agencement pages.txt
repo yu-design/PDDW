@@ -1,0 +1,54 @@
+Page classique
+	> Home (présentatioin de la librairie, nouveautés, les promos,... images promotionnelles,...)
+	> BTN Article
+		* Manga
+		* BD
+		* roman
+		* Goodies
+		* figurine
+		* jeux (de plateau, carte à jouer)
+	> 
+	> Contact
+
+Page "Paramétrage"
+	> Réservation
+	> Carte de fidélité
+	> favoris
+
+Page "Recherche d'article"
+	> Par édition
+	> Par auteur
+	> Par type (bd, manga, ...) plusieurs choix possibles
+	> Prix plage de prix
+	> 
+
+Toujours présent sur la page principal :
+========================================
+
+Header
+	> Logo
+	> Accès au paramétrage
+	> Favoris
+	> pannier
+	> Recherche d'un article
+	> Déconnexion
+	> Aide
+
+Footer
+	> Informations utiles
+		* Adresse de la librairie (Emplacement du magasin)
+		* Contact téléphonique
+		* Horaires de la librairie
+		* Accès à la possibilité de contacter le magasin (formulaire de contact en pop-up)
+	> A propos de Bédébile
+		* Mentions légales
+		* Historique de la librairie
+	> Accès à des sites tiers
+		* Site 1
+		* Site 2
+		* Site 3
+	> Aide
+		* Accès au règlementation de vente en ligne - règlement de la société
+		* Plan du site
+		* GDPR
+	> Copyright
