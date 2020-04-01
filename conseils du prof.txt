@@ -41,3 +41,32 @@ C'est cadeau !
 
 -----------------------------
 
+Suite à des coderviews, voici quelques points à savoir:
+
+- éviter les espaces/accents dans le nom de vos fichiers et url. C'est toujours une source de problème.
+- le javascript doit être écrit dans des fichiers .js et pas dans des balises scripts. On importe les js dans le header des pages.
+- si vous avez un session_start() dans votre routeur (index.php) ça ne sert à rien de refaire des session_start() ailleurs. (car pour rappel: vous allez toujours passer par votre routeur)
+- aucune logique dans les vues. Ex: Si besoin de rediriger un utilisateur, la redirection va se faire au niveau du controller.
+- une vue ne fera jamais de include/require model ou controller.
+- centraliser votre connecteur PDO à un seul endroit. Eviter donc de faire 36 fois "new PDO" dans vos modèles (vous pouvez par exemple créer une fonction getPDO qui retournera votre objet pdo).
+Toujours au niveau des vues, vous allez probablement vouloir à un moment afficher un menu spécifique en fonction du rôle de l'utilisateur connecté.
+A ce moment là, vous pouvez exceptionnellement placer une petite condition.
+
+Une autre méthode serait d'avoir deux templates pour le menu et travailler avec plusieurs vues pour reconstruire une page html complète.
+On aurait donc une vue header (contenant <html>, <head></head>), une menu (contenant le menu "anonyme", une menuadmin (contenant le menu "admin"), une content (contenant le corps de ta page <main> ou autre) et une footer (content <footer></footer></html>) par exemple.
+Et alors au niveau du controller, appeler plusieurs vues pour reconstruire une page complète.
+Ex d'un controller:
+
+include view/header.php;
+if ($user['role'] == 'admin' {
+include view/menuadmin.php;
+} else {
+include view/menu.php;
+}
+include view/content.php;
+include view/footer.php;
+
+Je n'impose pas cette méthode mais ça vous montre une autre façon de faire pour éviter les if dans vos vues.
+
+-----------------------------
+
