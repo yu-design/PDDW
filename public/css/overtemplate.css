@@ -1,0 +1,57 @@
+body{
+    background-color: #ffffff;
+}
+
+.bg-color-nav-top{
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.bg-color-nav-bottom{
+    background-color: #54c7E2;
+    width: 100%;
+    height: 20px;
+}
+
+.space-search{
+    margin:auto;
+}
+
+.form-control, .btn{
+    border-radius:1.25rem;
+}
+
+.btn-outline-success{
+    color:#ffffff;
+}
+
+.btn{
+    background-color: #1A9DAE;
+}
+
+.logo{
+    margin-left: 50px;
+    padding-right:20px;
+}
+
+.sous-menu{
+    padding-left:35px;
+    color:#aaa;
+}
+
+/*.navbar{
+    padding : 0.5rem 0rem 0rem 3rem;
+}
+
+.navbar-brand{
+    padding-top: 0rem;
+    padding-bottom:0.5rem;
+}
+
+.nav_article{
+    clear: both;
+    width:100%;
+    height:15px;
+    background-color: #54C7E2;
+    color: #ffffff;
+}*/
