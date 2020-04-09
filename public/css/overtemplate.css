@@ -39,6 +39,14 @@ body{
     color:#aaa;
 }
 
+.fa-heart::before{
+    content:"\f004";
+}
+
+.fa-shopping-cart::before{
+    content:"\f07a";
+}
+
 /*.navbar{
     padding : 0.5rem 0rem 0rem 3rem;
 }

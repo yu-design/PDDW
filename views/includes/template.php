@@ -77,12 +77,7 @@
                         </div>
                     </li>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <?php if(empty($_SESSION['id'])):?>
-                            <a href="<?=ROOT_PATH?>login" class="btn btn-outline-success my-2 my-sm-0">Se connecter</a>
-                        <?php else:?>
-                            <a href="<?=ROOT_PATH?>user" class="btn btn-outline-info my-2 my-sm-0">Mon compte</a>
-                            <a href="<?=ROOT_PATH?>logout" class="btn btn-outline-success my-2 my-sm-0">Se déconnecter</a>
-                        <?php endif?>
+                        <a href="<?=ROOT_PATH?>login" class="btn btn-outline-success my-2 my-sm-0">Se connecter</a>
                     </div>
                 </ul>
             </div>
