@@ -41,10 +41,48 @@ body{
 
 .fa-heart::before{
     content:"\f004";
+    width: 16px;
+    height: 16px;
 }
 
 .fa-shopping-cart::before{
     content:"\f07a";
+}
+
+.entreBouton{
+    width:10px;
+}
+
+.background-header404{
+    background-image: url("public/images/background-404.jpg");
+    height:640px;
+    width: 1920px;
+}
+
+footer{
+    background-color: #1A9DAE;
+}
+
+footer a{
+    color:white;
+}
+
+footer h5, p{
+    color:white;
+}
+
+footer .telephone{
+    content: \f098;
+    width:16px;
+    height:16px;
+}
+
+footer .mail{
+    content: \f003;
+}
+
+.pt-3, .py-3 {
+    padding-top: 0rem!important;
 }
 
 /*.navbar{

@@ -1,6 +1,7 @@
+<?php ob_start() ?>
+Coucou, vous êtes sur la page welcome !
 <?php
-//$title="Bienvenue";
-//$content="Welcome";
+$titre = "Bienvenue";
+$content = ob_get_clean();
 include 'includes/template.php';
 ?>
-Coucou, vous êtes sur la page welcome !
