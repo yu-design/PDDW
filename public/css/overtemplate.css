@@ -85,6 +85,14 @@ footer .mail{
     padding-top: 0rem!important;
 }
 
+.min-height{
+    min-height: 300px;
+}
+
+.container{
+    padding:20px 0px 20px 0px;
+}
+
 /*.navbar{
     padding : 0.5rem 0rem 0rem 3rem;
 }

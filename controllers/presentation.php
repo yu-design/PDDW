@@ -1,6 +1,6 @@
 <?php
 
-$titre="Bédébile - Boutique en ligne";
+$titre="Bédébile - Presentation";
 
 include 'views/includes/head.php';
 
@@ -21,8 +21,8 @@ else
 
 }
 
-include 'views/includes/header.php';
-include 'views/welcome.php';
+include 'views/includes/header-presentation.php';
+include 'views/presentation.php';
 include 'views/includes/main.php';
 include 'views/includes/footer.php';
 

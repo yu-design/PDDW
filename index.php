@@ -1,7 +1,6 @@
-<? php
-
+<?php
 /*
-// définition des id de role en tant que constante. facilité de lecture du code => problème lors de la récupération du nom du role via PDO
+définition des id de role en tant que constante. facilité de lecture du code => problème lors de la récupération du nom du role via PDO
 define('ADMIN',2);
 define('USER',1);
 */

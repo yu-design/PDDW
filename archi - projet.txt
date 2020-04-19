@@ -1,0 +1,66 @@
+index (root_path)
+
+controlers
+- 404
+- account
+- admin
+- commande
+- commande listing
+- login
+- logout
+- article (1 par type?)
+- article admin (1 par type?)
+- panier
+- signup
+- statistiques
+- stats data provider
+- user
+- welcome
+
+views
+- 404
+- account
+- admin
+- commande detail
+- commandes
+- commandes listing
+- commande valide
+- login
+- logout
+- article add
+- article edit
+- article detail
+- article detail admin
+- article
+- article admin
+- panier
+- panier vide
+- signup
+- stats
+- user edit
+- welcome
+-> include
+	- head
+	- nav
+	- nav user
+	- nav admin
+	- header
+	- main
+	- footer
+
+models
+- Commande
+- Contenu commande
+- database
+- file handler
+- article (faut-il en faire 1 par type d'article?)
+- panier
+- stats
+- user
+
+public
+-> css
+	- bootstrap
+	- override
+-> js
+	- bootstrap
