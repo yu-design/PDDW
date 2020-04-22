@@ -9,6 +9,7 @@ CREATE TABLE roleUtilisateur(
 
 CREATE TABLE utilisateur(
 	ID INTEGER(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Login VARCHAR(255) NOT NULL,
 	Nom VARCHAR(255) NOT NULL,
 	Prenom VARCHAR(255) NOT NULL,
 	Pseudo VARCHAR(255) NULL,
@@ -66,30 +67,31 @@ INSERT INTO roleUtilisateur (Nom) VALUES ('Admin');
 INSERT INTO roleUtilisateur (Nom) VALUES ('Employe');
 INSERT INTO roleUtilisateur (Nom) VALUES ('client');
 
-INSERT INTO utilisateur (Nom, Prenom, Pseudo,DateNaissance,Adresse,CP,Ville,RoleUtilisateur_ID)
-VALUES ('Admin', 'Julien', 'yu-design', '1987-07-01', 'Rue d\'ici ou d\'ailleur, 8', 7100, 'La Louvière', 1);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, DateNaissance,Adresse,CP,Ville,RoleUtilisateur_ID)
+VALUES ('Admin', 'Deyaert', 'Julien', 'yu-design', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', '1987-07-01', 'Rue d\'ici ou d\'ailleur, 8', 7100, 'La Louvière', 1);
 
-INSERT INTO utilisateur (Nom, Prenom, Pseudo,Adresse,CP,Ville,RoleUtilisateur_ID)
-VALUES ('Test', 'Vendeur1', 'Vendeur1', 'Rue d\'ici ou d\'ailleur, 10', 7100, 'La Louvière', 2);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID)
+VALUES ('Vendeur1', 'Test', 'Vendeur1', 'Vendeur1', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue d\'ici ou d\'ailleur, 10', 7100, 'La Louvière', 2);
 
-INSERT INTO utilisateur (Nom, Prenom, Pseudo, Adresse,CP,Ville,RoleUtilisateur_ID)
-VALUES ('Test', 'Vendeur2', 'Vendeur2', 'Rue d\'ici ou d\'ailleur, 10', 7100, 'La Louvière', 2);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID)
+VALUES ('Vendeur2', 'Test', 'Vendeur2', 'Vendeur2', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue d\'ici ou d\'ailleur, 10', 7100, 'La Louvière', 2);
 
-INSERT INTO utilisateur (Nom, Prenom, Pseudo, Adresse,CP,Ville,RoleUtilisateur_ID)
-VALUES ('Test', 'Client1', 'Client1', 'Rue des acheteurs, 1', 7100, 'La Louvière', 3);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID)
+VALUES ('Client1', 'Test', 'Client1', 'Client1', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue des acheteurs, 1', 7100, 'La Louvière', 3);
 
-INSERT INTO utilisateur (Nom, Prenom, Pseudo, Adresse,CP,Ville,RoleUtilisateur_ID)
-VALUES ('Test', 'Client2', 'Client2', 'Rue des acheteurs, 3', 7100, 'La Louvière', 3);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID)
+VALUES ('Client2', 'Test', 'Client2', 'Client2', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue des acheteurs, 3', 7100, 'La Louvière', 3);
 
-INSERT INTO utilisateur (Nom, Prenom, Pseudo, Adresse,CP,Ville,RoleUtilisateur_ID)
-VALUES ('Test', 'Client3', 'Client3', 'Rue des acheteurs, 5', 7100, 'La Louvière', 3);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID)
+VALUES ('Client3', 'Test', 'Client3', 'Client3', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue des acheteurs, 5', 7100, 'La Louvière', 3);
 
-INSERT INTO utilisateur (Nom, Prenom, Pseudo, Adresse,CP,Ville,RoleUtilisateur_ID)
-VALUES ('Test', 'Client4', 'Client4', 'Rue des acheteurs, 7', 7100, 'La Louvière', 3);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID)
+VALUES ('Client4', 'Test', 'Client4', 'Client4', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue des acheteurs, 7', 7100, 'La Louvière', 3);
 
 INSERT INTO typeArticle (Nom) VALUES ('Bande dessinée');
 INSERT INTO typeArticle (Nom) VALUES ('Comics');
 INSERT INTO typeArticle (Nom) VALUES ('Manga');
+INSERT INTO typeArticle (Nom) VALUES ('Roman');
 
 INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Visible)
 VALUES ('9782505015932', '978-2-505-01593-2', 1, 'Naruto collector Tome 1','Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, 1);

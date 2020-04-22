@@ -1,8 +1,9 @@
 <?php
+    $titre="Se connecter";
     include 'views/includes/head.php';
     include 'views/includes/nav.php';
     require 'models/users.php';
-    $titre="Connexion";
+    
     function isValidUser($login, $password) {
         $user = getUserByLogin($login);
         //Ici on va vérifier si le login/pass est bon
@@ -24,9 +25,11 @@
             if($user)
             {
                 //Authentification OK
-                $_SESSION['id'] = $user['ID'];
+                $_SESSION['id'] = $user['id'];
+                // $_SESSION['login'] = $user['login'];
+                // $_SESSION['role'] = $user['role'];
                 $_SESSION['message'] = "Bienvenue ".$user['Pseudo'];
-                header("Location: ".ROOT_PATH);
+                header("Location: ".ROOT_PATH."welcome");
                 exit();
             }
             else
