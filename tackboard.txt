@@ -1,0 +1,33 @@
+Taskboard :											DONE
+- Créer une connexion fonctionnelle en DB d'un utilisateur					21-04-2020
+- Créer les entrées CRUD pour utilisateur -> vérifier si fonctionnel				22-04-2020
+- Créer les différentes view qui vont fonctionner avec le model User
+- Créer le/les contrôleurs qui vont avec
+	- déconnexion
+	- modification user
+- Vérifier l'accès dans nav en fonction du droit d'un utilisateur (voir index haut de l'index, vers quoi pointe les defines ?)
+
+
+
+- Créer le modifier article (CRUD). !Attention! Ne pas supprimer, masquer de la db
+- Créer les views
+- Créer les controlers
+- Débugger
+
+- Créer le pannier models (CRUD)
+- Créer views
+- Créer controlers
+- Débugger
+
+- Créer le pannel d'administration view
+- Créer le pannel d'administration controlers
+
+- Créer validation commande (accept/non accept)
+- Créer la views
+- Créer le controlers
+- Débugger
+
+- Créer les statistiques (js + attention json pour php) PHP et js ne sont pas copains
+- Créer views
+- Créer le controlers
+- Débugger
