@@ -25,9 +25,9 @@
             if($user)
             {
                 //Authentification OK
-                $_SESSION['id'] = $user['id'];
-                // $_SESSION['login'] = $user['login'];
-                // $_SESSION['role'] = $user['role'];
+                $_SESSION['id'] = $user['ID'];
+                $_SESSION['login'] = $user['Login'];
+                $_SESSION['role'] = $user['RoleUtilisateur_ID'];
                 $_SESSION['message'] = "Bienvenue ".$user['Pseudo'];
                 header("Location: ".ROOT_PATH."welcome");
                 exit();
