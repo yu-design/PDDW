@@ -1,9 +1,9 @@
 <?php
 
 //définition des id de role en tant que constante. facilité de lecture du code => problème lors de la récupération du nom du role via PDO
-define('VENDEUR',3);
-define('ADMIN',2);
-define('USER',1);
+define('ADMIN',1);
+define('VENDEUR',2);
+define('USER',3);
 
 
 session_start(); // On démarre toujours la session

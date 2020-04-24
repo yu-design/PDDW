@@ -31,3 +31,15 @@ Taskboard :											DONE
 - Créer views
 - Créer le controlers
 - Débugger
+
+
+
+Questions + A faire:
+====================
+
+- Vu que plusieurs articles, faut-il créer plusieurs model-controlers-views ou il y a un moyen de demande d'afficher un type d'article en fonction du bouton sur lequel on clique dans la navbar.
+	-> Où l'écrire (probablement dans le controler).
+
+- Ajouter une colonne dans la db Active pour indiquer si un rôle, un utilisateur, un article est actif.
+- Se renseigner avant d'utiliser le mode de pattern="[a-z09._%+-]+@[az09.-]+\.[a-z]{2,}$
+- errorMessage : Voir comment fonctionne l'error message ?

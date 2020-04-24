@@ -12,7 +12,12 @@ if(!empty($_SESSION['login']))
     }
     else
     {
-        include 'views/includes/nav-admin.php';
+        if($_SESSION['role'] == VENDEUR){
+            include 'views/includes/nav-vendeur.php';
+        }
+        else{
+            include 'views/includes/nav-admin.php';
+        }
     }
 }
 else

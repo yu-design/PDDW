@@ -22,15 +22,15 @@ function getUtilisateurParLogin($login) {
 }
 
 //Créer un nouveau utilisateur
-function creeUtilisateur(){$login, $nom, $prenom, $pseudo, $password, $dateNaissance, $adresseMail, $adresse, $cp, $ville, $numTelephone, $role)
+function creeUtilisateur($login, $nom, $prenom, $pseudo, $password, $dateNaissance, $adresseMail, $adresse, $cp, $ville, $numTelephone, $role){
     global $db;
     $reponse = $db->prepare('INSERT INTO utilisateur SET Login = :login, Nom = :nom, Prenom = :prenom, Pseudo = :pseudo, pass = :password, DateNaissance = :dnaissance, AdresseMail = :mail, Adresse = :adresse, CP = :cp, Ville = :ville, NumTelephone = :numtel, RoleUtilisateur_ID = :role ');
-    $reponse->execute([':login' => $login, ':nom' => $nom, ':prenom' => $prenom, ':pseudo' => $pseudo, ':password' => password_hash($password, PASSWORD_DEFAULT), ':dnaissance' => $dateNaissance, ':mail' => $adresseMail, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, ':role' =>; $role]);
+    $reponse->execute([':login' => $login, ':nom' => $nom, ':prenom' => $prenom, ':pseudo' => $pseudo, ':password' => password_hash($password, PASSWORD_DEFAULT), ':dnaissance' => $dateNaissance, ':mail' => $adresseMail, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, ':role' => $role]);
     $reponse->closeCursor();
 }
 
 //Vérifier si l'utilisateur existe
-function verifierSiUtilisateurExiste($login){
+function verifierSiUtilisateurExiste($login, $password){
     global $db;
     $reponse = $db->prepare('SELECT * FROM utilisateur WHERE Login = :login');
     $reponse->execute([':login' => $login]);
@@ -40,7 +40,7 @@ function verifierSiUtilisateurExiste($login){
 }
 
 //Modifier un utilisateur
-function modifierUtilisateur($id, $login, $nom, $prenom, $pseudo, $password, $dateNaissance, $adresseMail, $adresse, $cp, $ville, $numTelephone, $role) {
+/*function modifierUtilisateur($id, $login, $nom, $prenom, $pseudo, $password, $dateNaissance, $adresseMail, $adresse, $cp, $ville, $numTelephone, $role) {
     global $db;
     $user = getUtilisateurParId($id);
     //C'est ici qu'on va faire l'update de l'utilisateur.
@@ -53,8 +53,8 @@ function modifierUtilisateur($id, $login, $nom, $prenom, $pseudo, $password, $da
     }
     $reponse->execute([':login' => $login, ':nom' => $nom, ':prenom' => $prenom, ':pseudo' => $pseudo, ':password' => password_hash($password, PASSWORD_DEFAULT), ':dnaissance' => $dateNaissance, ':mail' => $adresseMail, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, ':role' =>; $role]);
     $reponse->closeCursor();
-}
-
+}*/
+/*
 // Mettre à blanc un utilisateur dans la base de données
 function supprimerUtilisateur($login){
     global $db;
@@ -63,4 +63,4 @@ function supprimerUtilisateur($login){
     $reponse->closeCursor();
 }
 
-?>
+?>*/
