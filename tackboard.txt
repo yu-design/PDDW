@@ -41,3 +41,4 @@ Questions + A faire:
 	-> Où l'écrire (probablement dans le controler).
 
 - Ajouter une colonne dans la db Active pour indiquer si un rôle, un utilisateur, un article est actif.
+- Création nouvel utilisateur (Erreur dans la création du rôle).

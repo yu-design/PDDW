@@ -3,6 +3,7 @@
     include 'views/includes/head.php';
     include 'views/includes/nav.php';
     require 'models/users.php';
+    
     if(!empty($_POST)) {
         if(!empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password']) && !empty($_POST['nom']) && !empty($_POST['prenom']))
         {
@@ -38,7 +39,7 @@
         }
     }
 
-    include 'views/enregistrer.php';
+    include 'views/modifUtilisateur.php';
     include 'views/includes/main.php';
     include 'views/includes/footer.php';
 

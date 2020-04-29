@@ -13,6 +13,8 @@
         if(!empty($_POST['login']) && !empty($_POST['password']))
         {
             $user = verifierSiUtilisateurExiste($_POST['login'], $_POST['password']);
+            /*var_dump($user['Actif']);
+            die();*/
             if($user && password_verify($_POST['password'],$user['Pass']))
             {
                 //Authentification OK
@@ -22,6 +24,11 @@
                 $_SESSION['role'] = $user['RoleUtilisateur_ID'];
                 header("Location: ".ROOT_PATH);
                 exit();
+            }
+            else if ($user==NULL)
+            {
+                //Utilisateur désactivé de la db
+                $messageErreur = "L'utilisateur est désactivé";
             }
             else
             {
