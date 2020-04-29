@@ -8,5 +8,8 @@
                 </div>
             </div>-->
             <!-- Contenu -->
+            <?php if(!empty($messageErreur)){
+                include("messageErreur.php");
+            }?>
             <?php echo $content; ?>
         </main>

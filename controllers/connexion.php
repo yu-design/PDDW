@@ -1,5 +1,5 @@
 <?php
-    $titre="Se connecter";
+    $titre = "Se connecter";
     include 'views/includes/head.php';
     include 'views/includes/nav.php';
     require 'models/users.php';
@@ -13,11 +13,12 @@
         if(!empty($_POST['login']) && !empty($_POST['password']))
         {
             $user = verifierSiUtilisateurExiste($_POST['login'], $_POST['password']);
-            if($user)
+            if($user && password_verify($_POST['password'],$user['Pass']))
             {
                 //Authentification OK
                 $_SESSION['id'] = $user['ID'];
                 $_SESSION['login'] = $user['Login'];
+                $_SESSION['password'] = $user['password'];
                 $_SESSION['role'] = $user['RoleUtilisateur_ID'];
                 header("Location: ".ROOT_PATH);
                 exit();

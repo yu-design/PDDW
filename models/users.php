@@ -1,11 +1,21 @@
 <?php
 require_once 'models/db.php';
 
-//Permet de récupérer l'id d'un utilisateur
-function getUtilisateurParId($id) {
+//Vérifier si l'utilisateur existe
+function verifierSiUtilisateurExiste($login, $password){
     global $db;
-    $reponse = $db->prepare('SELECT * FROM utilisateur WHERE ID = :id');
-    $reponse->execute([':id' => $id]);
+    $reponse = $db->prepare('SELECT ID, Login, RoleUtilisateur_ID, Pass FROM utilisateur WHERE Login = :login');
+    $reponse->execute([':login' => $login]);
+    $user = $reponse->fetch();
+    $reponse->closeCursor();
+    return $user;
+}
+
+//Permet de récupérer l'id d'un utilisateur
+function getUtilisateurParMail($adresseMail) {
+    global $db;
+    $reponse = $db->prepare('SELECT * FROM utilisateur WHERE AdresseMail = :email');
+    $reponse->execute([':email' => $adresseMail]);
     $user = $reponse->fetch();
     $reponse->closeCursor(); // Termine le traitement de la requête
     return $user;
@@ -22,25 +32,22 @@ function getUtilisateurParLogin($login) {
 }
 
 //Créer un nouveau utilisateur
-function creeUtilisateur($login, $nom, $prenom, $pseudo, $password, $dateNaissance, $adresseMail, $adresse, $cp, $ville, $numTelephone, $role){
+function creeUtilisateur($login, $adresseMail, $password, $nom, $prenom){
     global $db;
-    $reponse = $db->prepare('INSERT INTO utilisateur SET Login = :login, Nom = :nom, Prenom = :prenom, Pseudo = :pseudo, pass = :password, DateNaissance = :dnaissance, AdresseMail = :mail, Adresse = :adresse, CP = :cp, Ville = :ville, NumTelephone = :numtel, RoleUtilisateur_ID = :role ');
-    $reponse->execute([':login' => $login, ':nom' => $nom, ':prenom' => $prenom, ':pseudo' => $pseudo, ':password' => password_hash($password, PASSWORD_DEFAULT), ':dnaissance' => $dateNaissance, ':mail' => $adresseMail, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, ':role' => $role]);
+    $reponse = $db->prepare('INSERT INTO utilisateur (Login, AdresseMail, Nom, Prenom, Pass, RoleUtilisateur_ID, Actif)
+                             VALUES (:login, :email, :nom, :prenom, :password, :role, :actif )');
+    $reponse->execute([':login' => $login,
+                       ':email' => $adresseMail,
+                       ':nom' => $nom,
+                       ':prenom' => $prenom,
+                       ':password' => password_hash($password, PASSWORD_DEFAULT),
+                       ':role' => '3',
+                       ':actif' => '1']);
     $reponse->closeCursor();
 }
-
-//Vérifier si l'utilisateur existe
-function verifierSiUtilisateurExiste($login, $password){
-    global $db;
-    $reponse = $db->prepare('SELECT * FROM utilisateur WHERE Login = :login');
-    $reponse->execute([':login' => $login]);
-    $user = $reponse->fetch();
-    $reponse->closeCursor();
-    return $user;
-}
-
+/*
 //Modifier un utilisateur
-/*function modifierUtilisateur($id, $login, $nom, $prenom, $pseudo, $password, $dateNaissance, $adresseMail, $adresse, $cp, $ville, $numTelephone, $role) {
+function modifierUtilisateur($login, $nom, $prenom, $pseudo, $password, $dateNaissance, $adresseMail, $adresse, $cp, $ville, $numTelephone) {
     global $db;
     $user = getUtilisateurParId($id);
     //C'est ici qu'on va faire l'update de l'utilisateur.
@@ -53,7 +60,8 @@ function verifierSiUtilisateurExiste($login, $password){
     }
     $reponse->execute([':login' => $login, ':nom' => $nom, ':prenom' => $prenom, ':pseudo' => $pseudo, ':password' => password_hash($password, PASSWORD_DEFAULT), ':dnaissance' => $dateNaissance, ':mail' => $adresseMail, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, ':role' =>; $role]);
     $reponse->closeCursor();
-}*/
+}
+
 /*
 // Mettre à blanc un utilisateur dans la base de données
 function supprimerUtilisateur($login){
@@ -62,5 +70,5 @@ function supprimerUtilisateur($login){
     $reponse->execute([":login" => $login]);
     $reponse->closeCursor();
 }
-
-?>*/
+*/
+?>
