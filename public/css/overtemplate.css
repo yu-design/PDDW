@@ -52,13 +52,13 @@ body{
 .entreBouton{
     width:10px;
 }
-
+/*
 .background-header404{
-    background-image: url("public/images/background-404.jpg");
-    height:640px;
-    width: 1920px;
+    background-image: url(../../public/images/background-404.jpg);
+    height: 100%;
+    width: 100%;
 }
-
+*/
 footer{
     background-color: #1A9DAE;
 }

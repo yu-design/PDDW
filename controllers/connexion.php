@@ -1,7 +1,8 @@
 <?php
     $titre = "Se connecter";
     include 'views/includes/head.php';
-    include 'views/includes/nav.php';
+    require 'navControler.php';
+    navControl();
     require 'models/users.php';
     
     if(!empty($_SESSION['id'])){

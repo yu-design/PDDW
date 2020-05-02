@@ -3,28 +3,8 @@
 $titre="Bédébile - Boutique en ligne";
 
 include 'views/includes/head.php';
-
-if(!empty($_SESSION['login']))
-{
-    if($_SESSION['role'] == USER)
-    {
-        include 'views/includes/nav-user.php';
-    }
-    else
-    {
-        if($_SESSION['role'] == VENDEUR){
-            include 'views/includes/nav-vendeur.php';
-        }
-        else{
-            include 'views/includes/nav-admin.php';
-        }
-    }
-}
-else
-{
-    include 'views/includes/nav.php';
-
-}
+require 'navControler.php';
+navControl();
 
 include 'views/includes/header.php';
 include 'views/welcome.php';
