@@ -14,8 +14,6 @@
         if(!empty($_POST['login']) && !empty($_POST['password']))
         {
             $user = verifierSiUtilisateurExiste($_POST['login'], $_POST['password']);
-            /*var_dump($user['Actif']);
-            die();*/
             if($user && password_verify($_POST['password'],$user['Pass']))
             {
                 //Authentification OK

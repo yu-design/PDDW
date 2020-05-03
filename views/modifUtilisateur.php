@@ -3,7 +3,7 @@
 <div class="padding-top100"></div>
 Veuillez entrer vos coordonnées (Tous les champs sont obligatoires).
 <?php if($user['RoleUtilisateur_ID']==3): //Client ?>
-    <form action="<?=ROOT_PATH.'enregistrer'?>" method="POST">
+    <form action="<?=ROOT_PATH.'modifUtilisateur'?>" method="POST">
         <div class="form-group">
             <label for="idlogin">Login:</label>
             <input type="text" class="form-control"  id="idlogin" placeholder="<?=$user['Login']?>" value="<?=$user['Login']?>" name="login" readonly>
@@ -53,14 +53,14 @@ Veuillez entrer vos coordonnées (Tous les champs sont obligatoires).
             <input type="" class="form-control" id="idnumtel" name="numtel" value="<?=$user['NumTelephone']?>">
         </div>
         <div>
+            <label for="actif">Désactiver le compte</label>    
             <input type="checkbox" id="actif" name="actif">
-            <label for="actif">Désactiver le compte</label>
         </div>
         <button type="submit" class="btn btn-primary">Modifier</button>
     </form>
 <?php endif; ?>
 <?php if($user['RoleUtilisateur_ID']==2): //Vendeur ?>
-    <form action="<?=ROOT_PATH.'enregistrer'?>" method="POST">
+    <form action="<?=ROOT_PATH.'modifUtilisateur'?>" method="POST">
         <div class="form-group">
             <label for="idlogin">Login:</label>
             <input type="text" class="form-control"  id="idlogin" placeholder="<?=$user['Login']?>" value="<?=$user['Login']?>" name="login">
@@ -110,14 +110,14 @@ Veuillez entrer vos coordonnées (Tous les champs sont obligatoires).
             <input type="" class="form-control" id="idnumtel" name="numtel" value="<?=$user['NumTelephone']?>">
         </div>
         <div>
+            <label for="actif">Désactiver le compte</label>    
             <input type="checkbox" id="actif" name="actif">
-            <label for="actif">Désactiver le compte</label>
         </div>
         <button type="submit" class="btn btn-primary">Modifier</button>
     </form>
 <?php endif; ?>
 <?php if($user['RoleUtilisateur_ID']==1): //Admin ?>
-    <form action="<?=ROOT_PATH.'enregistrer'?>" method="POST">
+    <form action="<?=ROOT_PATH.'modifUtilisateur'?>" method="POST">
         <div class="form-group">
             <label for="idlogin">Login:</label>
             <input type="text" class="form-control"  id="idlogin" placeholder="<?=$user['Login']?>" value="<?=$user['Login']?>" name="login">

@@ -26,3 +26,24 @@ Type d'utilisateur existant pour effectuer des tests :
 Admin		Login : Admin		Pass : test
 Vendeur		Login : Vendeur1	Pass : test
 User		Login : Client2		Pass : test
+
+
+
+
+
+Reste à faire :
+===============
+- Modification utilisateur
+- Administration utilisateur
+- Tout le traitement article (Ajouter un article, modifier un article, mettre en inactif un article)
+	+ images,...
+- Effectuer une commande
+- Valider une commande
+- Modifier un prix et vérifier qu'il ne modifie pas la commande du client
+- panier
+- Statistique de vente
+
+Extra souhaité par moi :
+- Mode de paiement (paypal test)
+- Carte de fidélité
+- Favoris du client (Indiquer quand un article n'est plus disponible)
