@@ -51,18 +51,19 @@ function creeUtilisateur($login, $adresseMail, $password, $nom, $prenom){
 }
 
 //Modifier un utilisateur
-function modifierUtilisateur($login, $nom, $prenom, $pseudo, $password, $dateNaissance, $adresseMail, $adresse, $cp, $ville, $numTelephone) {
+function modifierUtilisateur($login, $nom, $prenom, $pseudo, $password, $dateNaissance, $adresseMail, $adresse, $cp, $ville, $numTelephone, $actif) {
     global $db;
     $user = getUtilisateurParId($id);
     //C'est ici qu'on va faire l'update de l'utilisateur.
-    $reponse = $db->prepare('UPDATE utilisateur SET Login = :login, Nom = :nom, Prenom = :prenom, Pseudo = :pseudo, pass = :password, DateNaissance = :dnaissance, AdresseMail = :mail, Adresse = :adresse, CP = :cp, Ville = :ville, NumTelephone = :numtel, RoleUtilisateur_ID = :role WHERE ID = :id');
+    $reponse = $db->prepare('UPDATE utilisateur SET Login = :login, Nom = :nom, Prenom = :prenom, Pseudo = :pseudo, pass = :password, DateNaissance = :dnaissance, AdresseMail = :mail, Adresse = :adresse, CP = :cp, Ville = :ville, NumTelephone = :numtel, RoleUtilisateur_ID = :role, Actif = :actif WHERE ID = :id');
     if($password){
         $password = password_hash($password, PASSWORD_DEFAULT);
     }
     else {
         $password = $user['Pass'];
     }
-    $reponse->execute([':login' => $login, ':nom' => $nom, ':prenom' => $prenom, ':pseudo' => $pseudo, ':password' => password_hash($password, PASSWORD_DEFAULT), ':dnaissance' => $dateNaissance, ':mail' => $adresseMail, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, ':role' => $role]);    $reponse->closeCursor();
+    $reponse->execute([':login' => $login, ':nom' => $nom, ':prenom' => $prenom, ':pseudo' => $pseudo, ':password' => password_hash($password, PASSWORD_DEFAULT), ':dnaissance' => $dateNaissance, ':mail' => $adresseMail, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, ':role' => $role, ':Actif' => $actif]);
+    $reponse->closeCursor();
 }
 
 function modifierUtilisateurAdmin($login, $nom, $prenom, $pseudo, $password, $dateNaissance, $adresseMail, $adresse, $cp, $ville, $numTelephone){
