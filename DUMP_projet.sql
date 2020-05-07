@@ -17,9 +17,9 @@ CREATE TABLE utilisateur(
 	DateNaissance DATE NULL,
 	AdresseMail VARCHAR(255) NOT NULL,
 	Adresse VARCHAR(255) NULL,
-	CP INTEGER(11) NULL,
+	CP VARCHAR(11) NULL,
 	Ville VARCHAR(255) NULL,
-	NumTelephone INTEGER(15) NULL,
+	NumTelephone VARCHAR(15) NULL,
 	RoleUtilisateur_ID INTEGER(11) NOT NULL REFERENCES roleUtilisateur(ID),
 	Actif BOOLEAN
 )ENGINE=INNODB;

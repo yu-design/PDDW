@@ -54,7 +54,7 @@ Veuillez entrer vos coordonnées (Tous les champs sont obligatoires).
         </div>
         <div>
             <label for="actif">Désactiver le compte</label>    
-            <input type="checkbox" id="actif" name="actif">
+            <input type="checkbox" id="actif" name="actif" value="<?=$user['Actif']?>">
         </div>
         <button type="submit" class="btn btn-primary">Modifier</button>
     </form>
@@ -110,8 +110,8 @@ Veuillez entrer vos coordonnées (Tous les champs sont obligatoires).
             <input type="" class="form-control" id="idnumtel" name="numtel" value="<?=$user['NumTelephone']?>">
         </div>
         <div>
-            <label for="actif">Désactiver le compte</label>    
-            <input type="checkbox" id="actif" name="actif">
+            <label for="actif">Désactiver le compte</label>
+            <input type="checkbox" id="actif" name="actif" value="<?=$user['NumTelephone']?>">
         </div>
         <button type="submit" class="btn btn-primary">Modifier</button>
     </form>

@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         
         <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/all.min.css">
         <!--<link rel="stylesheet" href="<?=ROOT_PATH?>public/css/sticky-footer-navbar.css">-->
         <link rel="stylesheet" href="<?=ROOT_PATH?>public/css/overtemplate.css">
         <script src="<?=ROOT_PATH?>public/js/jquery-3.4.1.slim.min.js"></script>

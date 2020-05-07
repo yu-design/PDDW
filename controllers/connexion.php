@@ -19,7 +19,7 @@
                 //Authentification OK
                 $_SESSION['id'] = $user['ID'];
                 $_SESSION['login'] = $user['Login'];
-                $_SESSION['password'] = $user['password'];
+                $_SESSION['Password'] = $user['Pass'];
                 $_SESSION['role'] = $user['RoleUtilisateur_ID'];
                 header("Location: ".ROOT_PATH);
                 exit();
