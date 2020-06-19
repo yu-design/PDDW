@@ -13,7 +13,7 @@ CREATE TABLE utilisateur(
 	Nom VARCHAR(255) NOT NULL,
 	Prenom VARCHAR(255) NOT NULL,
 	Pseudo VARCHAR(255) NULL,
-	Pass VARCHAR(255) NULL,
+	Pass VARCHAR(255) NOT NULL,
 	DateNaissance DATE NULL,
 	AdresseMail VARCHAR(255) NOT NULL,
 	Adresse VARCHAR(255) NULL,
@@ -68,26 +68,26 @@ INSERT INTO roleUtilisateur (Nom) VALUES ('Admin');
 INSERT INTO roleUtilisateur (Nom) VALUES ('Employe');
 INSERT INTO roleUtilisateur (Nom) VALUES ('client');
 
-INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, DateNaissance,Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
-VALUES ('Admin', 'Deyaert', 'Julien', 'yu-design', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', '1987-07-01', 'Rue d\'ici ou d\'ailleur, 8', 7100, 'La Louvière', 1, 1);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, DateNaissance, AdresseMail, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
+VALUES ('Admin', 'Deyaert', 'Julien', 'yu-design', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'admin@bd.com', '1987-07-01', 'Rue d\'ici ou d\'ailleur, 8', 7100, 'La Louvière', 1, 1);
 
-INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
-VALUES ('Vendeur1', 'Test', 'Vendeur1', 'Vendeur1', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue d\'ici ou d\'ailleur, 10', 7100, 'La Louvière', 2, 1);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, AdresseMail, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
+VALUES ('Vendeur1', 'Test', 'Vendeur1', 'Vendeur1', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'vendeur1@bd.com', 'Rue d\'ici ou d\'ailleur, 10', 7100, 'La Louvière', 2, 1);
 
-INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
-VALUES ('Vendeur2', 'Test', 'Vendeur2', 'Vendeur2', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue d\'ici ou d\'ailleur, 10', 7100, 'La Louvière', 2, 1);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, AdresseMail, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
+VALUES ('Vendeur2', 'Test', 'Vendeur2', 'Vendeur2', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'vendeur2@bd.com', 'Rue d\'ici ou d\'ailleur, 10', 7100, 'La Louvière', 2, 1);
 
-INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
-VALUES ('Client1', 'Test', 'Client1', 'Client1', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue des acheteurs, 1', 7100, 'La Louvière', 3, 1);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, AdresseMail, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
+VALUES ('Client1', 'Test', 'Client1', 'Client1', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'client1@bd.com', 'Rue des acheteurs, 1', 7100, 'La Louvière', 3, 1);
 
-INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
-VALUES ('Client2', 'Test', 'Client2', 'Client2', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue des acheteurs, 3', 7100, 'La Louvière', 3, 1);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, AdresseMail, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
+VALUES ('Client2', 'Test', 'Client2', 'Client2', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'client2@bd.com', 'Rue des acheteurs, 3', 7100, 'La Louvière', 3, 1);
 
-INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
-VALUES ('Client3', 'Test', 'Client3', 'Client3', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue des acheteurs, 5', 7100, 'La Louvière', 3, 1);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, AdresseMail, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
+VALUES ('Client3', 'Test', 'Client3', 'Client3', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'client3@bd.com', 'Rue des acheteurs, 5', 7100, 'La Louvière', 3, 1);
 
-INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
-VALUES ('Client4', 'Test', 'Client4', 'Client4', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'Rue des acheteurs, 7', 7100, 'La Louvière', 3, 1);
+INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, AdresseMail, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
+VALUES ('Client4', 'Test', 'Client4', 'Client4', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'client4@bd.com', 'Rue des acheteurs, 7', 7100, 'La Louvière', 3, 1);
 
 INSERT INTO typeArticle (Nom) VALUES ('Bande dessinée');
 INSERT INTO typeArticle (Nom) VALUES ('Comics');

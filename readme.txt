@@ -2,7 +2,9 @@ Pour bien démarrer
 ------------------
 
 Base de donnée créée avec sqlyog
-Pour charge la base de donnée, modifier la ligne _____________ dans le fichier ________.php
+
+Pour créer un lien entre le site et la base de donnée, modifier la ligne 5 : $bdd = new PDO('mysql:host=localhost;dbname=bedeprog;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); dans le fichier db.php qui se trouve dans les models.
+A la place de 'root', indiquer votre login et mettre votre mots de passe entre les '' qui suivent.
 
 Version de PHP utilisé
 ======================
