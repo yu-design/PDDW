@@ -69,7 +69,7 @@ INSERT INTO roleUtilisateur (Nom) VALUES ('Employe');
 INSERT INTO roleUtilisateur (Nom) VALUES ('client');
 
 INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, DateNaissance, AdresseMail, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
-VALUES ('Admin', 'Deyaert', 'Julien', 'yu-design', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'admin@bd.com', '1987-07-01', 'Rue d\'ici ou d\'ailleur, 8', 7100, 'La Louvière', 1, 1);
+VALUES ('Admin', 'Deyaert', 'Julien', 'yu-design', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', '1987-07-01', 'admin@bd.com', 'Rue d\'ici ou d\'ailleur, 8', 7100, 'La Louvière', 1, 1);
 
 INSERT INTO utilisateur (Login, Nom, Prenom, Pseudo, Pass, AdresseMail, Adresse,CP,Ville,RoleUtilisateur_ID,Actif)
 VALUES ('Vendeur1', 'Test', 'Vendeur1', 'Vendeur1', '$2y$10$ndduLl9SozjVECD9ETH/vuFNT4kO3n2RekW3HGjrXfnBButZfYIsG', 'vendeur1@bd.com', 'Rue d\'ici ou d\'ailleur, 10', 7100, 'La Louvière', 2, 1);
