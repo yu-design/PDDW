@@ -50,7 +50,7 @@ views
 
 models
 - Commande
-- Contenu commande
+- ContenuCommande
 - database
 - file handler
 - article (faut-il en faire 1 par type d'article?)
