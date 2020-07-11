@@ -1,0 +1,106 @@
+Projet web :
+============
+
+readme :
+--------
+indiquer la version de php du projet
+indiquer les variables pour la connexion à la base de données :
+	- $db_url
+	- $db_login
+	- $db_pass
+indiquer les utilisateurs déjà créés et leurs droits.
+
+
+dump :
+------
+table
+entrée
+routine
+
+
+Limitations :
+-------------
+permettre au visiteur :
+	- consulter la liste des articles souhaités
+	- voir le détail des articles (attention créer une url dédiée : monsite.be/monarticle)
+	- s'inscrire sur le site
+	- s'authentifier
+	- ajouter des articles dans le pannier
+	- valider une commande
+	- consulter la liste de ses commandes
+	- modifier ses données personnelle (nom, prénom, adresse,...)
+permettre au administrateur :
+	- ajouter des articles
+	- éditer des articles
+	- supprimer des articles
+	- lister des commandes des clients
+	- Statistique des commandes
+	- Ajouter d'autres administrateurs
+
+URL des pages :
+	- Toutes les pages doivent avoir un nom clair dans l'url de la page
+		ex : monsite/panier_de_Julien_deyaert/modification
+		     monsite/articles/mangas/naruto_episode_1
+
+javascript : par ex
+	- Ajouter des articles via un fichier json (+ prévisualisation)
+	- Drag and drop d'article dans le panier
+	- Prévisualiser le rendu final d'un formulaire d'ajout d'un article avant validation du formulaire
+	- Message d'avertissement lors de l'ajour d'un article déjà existant (clé : IBAN, LIB)
+
+Article :
+	- titre
+	- prix
+	- description
+	- image de l'article
+	- pas de gestion du stock (puis-je fais une validation de l'admin si stock ou pas ?)
+
+Commande :
+	- Nom du client qui passe la commande
+	- Les articles commandés
+	- Le prix par article
+	- Le prix total de la commande
+	- Le statut de la commande (en attente, validée, annulée)
+
+Statistique :
+	- utilisation d'une librairie javascript (utilisation d'ajax pour recherche de manière synchrone)
+
+
+
+
+DB :
+====
+	Utilisateur
+	RoleUtilisateur
+	Article
+	Vente
+	VenteArticle
+	Type d'article
+	Paiement
+	ArticlesFavoris
+
+
+
+
+page à créer :
+--------------
+
+- index
+- présentation
+- article
+- connexion
+- déconnexion
+- s'inscrire
+- modifier son profil
+- modifier le profil d'un utilisateur
+- ajouter un article
+- modifier un article
+- supprimer un article
+- statistique de vente
+- validation de commande
+- pannier
+- contact
+- favoris
+
+
+

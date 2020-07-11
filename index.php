@@ -34,4 +34,5 @@ else {
     require 'controllers/404.php';
     exit();
 }
+
 ?>
