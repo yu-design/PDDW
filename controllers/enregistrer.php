@@ -2,7 +2,7 @@
     $titre = "S'enregistrer";
     include 'views/includes/head.php';
     include 'views/includes/nav.php';
-    require 'models/users.php';
+    require 'models/utilisateur.php';
     if(!empty($_POST)) {
         if(!empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password']) && !empty($_POST['nom']) && !empty($_POST['prenom']))
         {
@@ -20,7 +20,7 @@
                 else if($mail){
                     $messageErreur = "Le mail ".$_POST['email']." existe déjà...";
                 }else{
-                    creeUtilisateur($_POST['login'], $_POST['email'], $_POST['password'], $_POST['nom'], $_POST['prenom']);
+                    ajouterNouveauUtilisateur($_POST['login'], $_POST['email'], $_POST['password'], $_POST['nom'], $_POST['prenom']);
                 //ici je connecte directement l'user qui vient de s'inscrire
                 $user = getUtilisateurParLogin($_POST['login']);
                 $_SESSION['id'] = $user['ID'];

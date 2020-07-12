@@ -1,5 +1,10 @@
 body{
     background-color: #ffffff;
+    color: black;
+}
+
+p{
+    color: black;
 }
 
 .bg-color-nav-top{

@@ -3,7 +3,7 @@
     include 'views/includes/head.php';
     require 'navControler.php';
     navControl();
-    require 'models/users.php';
+    require 'models/utilisateur.php';
     
     if(!empty($_SESSION['id'])){
         header("Location: ".ROOT_PATH);
@@ -13,14 +13,14 @@
     if(!empty($_POST)) {
         if(!empty($_POST['login']) && !empty($_POST['password']))
         {
-            $user = verifierSiUtilisateurExiste($_POST['login'], $_POST['password']);
-            if($user && password_verify($_POST['password'],$user['Pass']))
+            $user = Utilisateur::verifierSiUtilisateurExiste($_POST['login'], $_POST['password']);
+            if($user && password_verify($_POST['password'],$user->Pass))
             {
                 //Authentification OK
-                $_SESSION['id'] = $user['ID'];
-                $_SESSION['login'] = $user['Login'];
-                $_SESSION['Password'] = $user['Pass'];
-                $_SESSION['role'] = $user['RoleUtilisateur_ID'];
+                $_SESSION['id'] = $user->ID;
+                $_SESSION['login'] = $user->Login;
+                $_SESSION['Password'] = $user->Pass;
+                $_SESSION['role'] = $user->RoleUtilisateur_ID;
                 header("Location: ".ROOT_PATH);
                 exit();
             }
