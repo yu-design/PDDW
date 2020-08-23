@@ -1,3 +1,3 @@
 <div class="alert alert-danger" role="alert">
-    <?= $messageErreur; ?>
+    <?= $_SESSION['error']?>
 </div>
