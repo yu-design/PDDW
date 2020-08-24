@@ -1,6 +1,6 @@
 <?php ob_start() ?>
 
 <?php
-    $titre = "Supprimer_article".$produit;
+    $titre = "Statistique de vente";
     $content = ob_get_clean();
 ?>

@@ -19,7 +19,7 @@
                             Articles
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Nouveautés</a>
+                            <a class="dropdown-item" href="<?=ROOT_PATH?>nouveautes_article">Nouveautés</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Bandes dessinées</a>
                             <a class="dropdown-item" href="#">Mangas</a>
@@ -35,8 +35,8 @@
                             Profil
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="<?=ROOT_PATH?>modifUtilisateur">Gestion profil</a>
-                            <a class="dropdown-item" href="#">Historique de commande</a>
+                        <a class="dropdown-item" href="<?=ROOT_PATH?>modifier_utilisateur">Gestion profil</a>
+                            <a class="dropdown-item" href="<?=ROOT_PATH?>historique_commande">Historique de commande</a>
                         </div>
                     </li>
                 </ul>

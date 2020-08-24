@@ -19,7 +19,7 @@
                             Articles
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Nouveautés</a>
+                            <a class="dropdown-item" href="<?=ROOT_PATH?>nouveautes_article">Nouveautés</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Bandes dessinées</a>
                             <a class="dropdown-item" href="#">Mangas</a>
@@ -35,14 +35,14 @@
                             Profil
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="<?=ROOT_PATH?>modifUtilisateur">Gestion profil</a>
-                            <a class="dropdown-item" href="#">Historique de commande</a>
+                            <a class="dropdown-item" href="<?=ROOT_PATH?>modifier_utilisateur">Gestion profil</a>
+                            <a class="dropdown-item" href="<?=ROOT_PATH?>historique_commande">Historique de commande</a>
                             <div class="dropdown-divider"></div>
                             <span class="dropdown-item" >Administration</span>
-                            <a class="dropdown-item sous-menu" href="#">Valider commande</a>
-                            <a class="dropdown-item sous-menu" href="#">Gestion article</a>
-                            <a class="dropdown-item sous-menu" href="#">Gestion client</a>
-                            <a class="dropdown-item sous-menu" href="#">Statistique de vente</a>
+                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>valider_commande">Valider commande</a>
+                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>gerer_article">Gestion article</a>
+                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>gerer_client">Gestion client</a>
+                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>statistique">Statistique de vente</a>
                         </div>
                     </li>
                 </ul>

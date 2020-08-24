@@ -10,6 +10,10 @@
             <!-- Contenu -->
             <?php if(!empty($messageErreur)){
                 include("messageErreur.php");
-            }?>
+            }
+            if(!empty($messageInfo)){
+                include("messageInfo.php");
+            }
+            ?>
             <?php echo $content; ?>
         </main>

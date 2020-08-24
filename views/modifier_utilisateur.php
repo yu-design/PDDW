@@ -3,7 +3,7 @@
 <div class="padding-top100"></div>
 Veuillez entrer vos coordonnées (Tous les champs sont obligatoires).
 <?php if($Utilisateur->RoleUtilisateur_ID==3): //Client ?>
-    <form action="<?=ROOT_PATH.'modifUtilisateur'?>" method="POST">
+    <form action="<?=ROOT_PATH.'modifier_utilisateur'?>" method="POST">
         <div class="form-group">
             <label for="idlogin">Login:</label>
             <input type="text" class="form-control"  id="idlogin" placeholder="<?=$Utilisateur->Login?>" value="<?=$Utilisateur->Login?>" name="login" readonly>
@@ -60,7 +60,7 @@ Veuillez entrer vos coordonnées (Tous les champs sont obligatoires).
     </form>
 <?php endif; ?>
 <?php if($Utilisateur->RoleUtilisateur_ID==2): //Vendeur ?>
-    <form action="<?=ROOT_PATH.'modifUtilisateur'?>" method="POST">
+    <form action="<?=ROOT_PATH.'modifier_utilisateur'?>" method="POST">
         <div class="form-group">
             <label for="idlogin">Login:</label>
             <input type="text" class="form-control"  id="idlogin" placeholder="<?=$Utilisateur->Login?>" value="<?=$Utilisateur->Login?>" name="login">
@@ -117,7 +117,7 @@ Veuillez entrer vos coordonnées (Tous les champs sont obligatoires).
     </form>
 <?php endif; ?>
 <?php if($Utilisateur->RoleUtilisateur_ID==1): //Admin ?>
-    <form action="<?=ROOT_PATH.'modifUtilisateur'?>" method="POST">
+    <form action="<?=ROOT_PATH.'modifier_utilisateur'?>" method="POST">
         <div class="form-group">
             <label for="idlogin">Login:</label>
             <input type="text" class="form-control"  id="idlogin" placeholder="<?=$Utilisateur->Login?>" value="<?=$Utilisateur->Login?>" name="login">

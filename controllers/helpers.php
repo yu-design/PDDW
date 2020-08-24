@@ -1,9 +1,8 @@
 <?php
     require 'models/utilisateur.php';
-    require 'views/includes/messageErreur.php';
 
     class helpers{
-/*
+
         public static function verifPass($login, $pass, $passConfirm){
             $utilisateur=Utilisateur::getUtilisateurParLogin($login);
             if(!empty($pass)){
@@ -16,18 +15,17 @@
                 }
             }
         }
-*/
-/*
-        public static function verifLogin(){
 
+        public static function verifLogin($login){
+            
         }
-*/
+
     }
 ?>
 
 
 <!--
-if(!empty($_POST)) {
+        if(!empty($_POST)) {
                 if(!empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password']) && !empty($_POST['nom']) && !empty($_POST['prenom'])){
                     //vérification du mot de passe
                     if($_POST['password'] != $_POST['confirm_password'])
