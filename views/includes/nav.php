@@ -27,6 +27,9 @@
                             <a class="dropdown-item" href="#">Romans</a>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=ROOT_PATH?>debug">Debug</a>
+                    </li>
                     <!--<li class="nav-item">
                         <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Contact</a>
                     </li>-->

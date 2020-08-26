@@ -1,27 +1,33 @@
 <?php
     require 'models/utilisateur.php';
-
+    $passwordActif=$utilisateur['Pass'];
+    
     class helpers{
+
+        public static function verifLogin($login){
+            return $loginCheck 
+        }
+
+        public static function verifMail($email){
+
+        }
 
         public static function verifPass($login, $pass, $passConfirm){
             $utilisateur=Utilisateur::getUtilisateurParLogin($login);
             if(!empty($pass)){
                 return $Utilisateur->Pass;
             }else{
-                try{
-
-                }catch(messageErreur e){
-                    $messageErreur;
-                }
+                
             }
         }
-
-        public static function verifLogin($login){
-            
-        }
-
     }
 ?>
+
+
+
+
+
+
 
 
 <!--

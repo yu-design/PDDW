@@ -27,9 +27,6 @@
                             <a class="dropdown-item" href="#">Romans</a>
                         </div>
                     </li>
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Contact</a>
-                    </li>-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Profil
@@ -44,6 +41,9 @@
                             <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>gerer_client">Gestion client</a>
                             <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>statistique">Statistique de vente</a>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=ROOT_PATH?>debug">Debug</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0 space-search">

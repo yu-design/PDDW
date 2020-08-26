@@ -12,21 +12,22 @@
                 $messageErreur = "Votre mot de passe ne correspond pas.";
             }
             else{ //vérifier que le login ou l'adresse mail n'existe pas
-                $user = Utilisateur::getUtilisateurParLogin($_POST['login']);
+                $utilisateur = Utilisateur::getUtilisateurParLogin($_POST['login']);
                 $mail = Utilisateur::getUtilisateurParMail($_POST['email']);
-                if($user){
+                if($utilisateur){
                     $messageErreur = "Le login ".$_POST['login']." existe déjà...";
                 }
                 else if($mail){
                     $messageErreur = "Le mail ".$_POST['email']." existe déjà...";
                 }else{
                     Utilisateur::ajouterNouveauUtilisateur($_POST['login'], $_POST['email'], $_POST['password'], $_POST['nom'], $_POST['prenom']);
-                    //ici je connecte directement l'user qui vient de s'inscrire
-                    $user = Utilisateur::getUtilisateurParLogin($_POST['login']); //Permet de rechercher le login qui vient d'être créé en base de données afin de l'utiliser
-                    $_SESSION['id'] = $user->ID;
-                    $_SESSION['login'] =  $user->Login;
-                    $_SESSION['role'] = $user->RoleUtilisateur_ID;
-                                echo $_SESSION['id'];
+                    //ici je connecte directement l'utilisateur qui vient de s'inscrire
+                    $utilisateur = Utilisateur::getUtilisateurParLogin($_POST['login']); //Permet de rechercher le login qui vient d'être créé en base de données afin de l'utiliser
+                    $_SESSION['id'] = $utilisateur->ID;
+                    $_SESSION['login'] =  $utilisateur->Login;
+                    $_SESSION['mail'] = $utilisateur->AdresseMail;
+                    $_SESSION['password'] = $utilisateur->Pass;
+                    $_SESSION['role'] = $utilisateur->RoleUtilisateur_ID;
                     header("Location: ".ROOT_PATH);
                     exit();
                 }

@@ -2,7 +2,6 @@
     $titre = "Se connecter";
     include 'views/includes/head.php';
     require 'navControler.php';
-    navControl();
     require 'models/utilisateur.php';
     
     if(!empty($_SESSION['id'])){
@@ -13,21 +12,22 @@
     if(!empty($_POST)) {
         if(!empty($_POST['login']) && !empty($_POST['password']))
         {
-            $user = Utilisateur::verifierSiUtilisateurExiste($_POST['login'], $_POST['password']);
-            if($user && password_verify($_POST['password'],$user->Pass))
+            $utilisateur = Utilisateur::verifierSiUtilisateurExiste($_POST['login'], $_POST['password']);
+            if($utilisateur && password_verify($_POST['password'],$utilisateur->Pass))
             {
                 //Authentification OK
-                $_SESSION['id'] = $user->ID;
-                $_SESSION['login'] = $user->Login;
-                $_SESSION['Password'] = $user->Pass;
-                $_SESSION['role'] = $user->RoleUtilisateur_ID;
+                $_SESSION['id'] = $utilisateur->ID;
+                $_SESSION['login'] = $utilisateur->Login;
+                $_SESSION['mail'] = $utilisateur->AdresseMail;
+                $_SESSION['password'] = $utilisateur->Pass;
+                $_SESSION['role'] = $utilisateur->RoleUtilisateur_ID;
                 header("Location: ".ROOT_PATH);
                 exit();
             }
-            else if ($user==NULL)
+            else if ($utilisateur==NULL)
             {
                 //Utilisateur désactivé de la db
-                $messageErreur = "L'utilisateur est désactivé";
+                $messageErreur = "L'utilisateur n'existe pas !";
             }
             else
             {
@@ -41,7 +41,8 @@
             $messageErreur = "Il manque une information login ou password !";
         }
     }
-
+    
+    navControl();
     include 'views/connexion.php';
     include 'views/includes/main.php';
     include 'views/includes/footer.php';

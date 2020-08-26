@@ -11,7 +11,7 @@ if(!empty($_POST['login'])){
         if(helpers::verifLogin($_POST['login'])==true){
             $loginValide=$_POST['login'];
         }else{
-            $messageErreur = "Votre Login existe déjà !"
+            $messageErreur = "Votre Login existe déjà !";
             exit();
         }
     }

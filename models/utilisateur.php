@@ -65,12 +65,18 @@ class Utilisateur{
 
     public static function getUtilisateurParLogin($login){
         global $db;
-        $reponse = $db->prepare('SELECT * FROM utilisateur WHERE Login = :login');
-        $reponse->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
-        $reponse->execute([':login' => $login]);
-        $user = $reponse->fetch();
-        $reponse->closeCursor();
-        return $user;
+        try{
+            $reponse = $db->prepare('SELECT * FROM utilisateur WHERE Login = :login');
+            $reponse->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
+            $reponse->execute([':login' => $login]);
+            $user = $reponse->fetch();
+            $reponse->closeCursor();
+            return $user;
+        }catch(Exception $ex){
+
+            die("Erreur : ".$ex->getMesage());
+        }
+
     }
 
     public static function getUtilisateurParMail($mail){
@@ -92,17 +98,15 @@ class Utilisateur{
         $reponse->closeCursor();
     }
 
-    public static function modifierUtilisateur($login, $prenom, $nom, $pseudo, $adresseMail, $password, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $actif) {
+    public static function modifierUtilisateur($id, $login, $prenom, $nom, $pseudo, $adresseMail, $password, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $actif) {
         global $db;
-        $utilisateur = getUtilisateurParLogin($login);
-        $reponse = $db->prepare('UPDATE utilisateur SET Login = :login, Prenom = :prenom, Nom = :nom, Pseudo = :pseudo, AdresseMail = :mail, Pass = :password, DateNaissance = :dnaissance, Adresse = :adresse, CP = :cp, Ville = :ville, NumTelephone = :numtel, Actif = :actif WHERE Login = :login');
-        if($password){
-            $password = password_hash($password, PASSWORD_DEFAULT);
+        $reponse = $db->prepare('UPDATE utilisateur SET Login = :login, Prenom = :prenom, Nom = :nom, Pseudo = :pseudo, AdresseMail = :mail, Pass = :password, DateNaissance = :dnaissance, Adresse = :adresse, CP = :cp, Ville = :ville, NumTelephone = :numtel, Actif = :actif WHERE ID = '.$id);
+        if($password == $_SESSION['password']){
+            $reponse->execute([':login' => $login, ':prenom' => $prenom, ':nom' => $nom, ':pseudo' => $pseudo, ':mail' => $adresseMail, ':password' => $password, ':dnaissance' => $dateNaissance, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, ':actif' => $actif]);
         }
         else {
-            $password = $utilisateur['Pass'];
+            $reponse->execute([':login' => $login, ':prenom' => $prenom, ':nom' => $nom, ':pseudo' => $pseudo, ':mail' => $adresseMail, ':password' => password_hash($password, PASSWORD_DEFAULT), ':dnaissance' => $dateNaissance, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, ':actif' => $actif]);
         }
-        $reponse->execute([':login' => $login, ':prenom' => $prenom, ':nom' => $nom, ':pseudo' => $pseudo, ':mail' => $adresseMail, ':password' => password_hash($password, PASSWORD_DEFAULT), ':dnaissance' => $dateNaissance, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, ':actif' => $actif]);
         $reponse->closeCursor();
     }
 
