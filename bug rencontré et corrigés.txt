@@ -1,0 +1,3 @@
+Erreur corrigées :
+
+- Lors de la modification d'un utilisateur : passage par des fonction pour la gestion des erreurs. Lors du passage dans un if/else ou il y avait un message d'erreur, le code n'arrêtait pas et il passait à la suite -> fonction pour ne pas continuer le code si erreur et affichage du message d'erreur.

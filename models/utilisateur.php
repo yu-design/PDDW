@@ -39,18 +39,30 @@ class Utilisateur{
     }
 
     //Permet de récupérer tous les utilisateurs dans la db -> a ne pas forcément garder dans le futur (autre stratégie)
-    public static function getAll(){
+    public static function getAll($pages, $premierParPage){
         global $db;
         try{
-            $respone = $db->query('select * from utilisateur');
-            $respone->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
-            $datas = $respone->fetchAll();
-            $respone->closeCursor();
+            $reponce = $db->query('SELECT * FROM utilisateur LIMIT 0, 7;');
+//            $reponce->bindValue(':premierParPage', $premierParPage, PDO::PARAM_INT);
+//            $reponce->bindValue(':pages', $pages, PDO::PARAM_INT);
+            $reponce->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
+            $datas = $reponce->fetchAll();
+            $reponce->closeCursor();
 
             return $datas;
         }catch (Exception $e){
             die('Erreur : '.$e->getMessage());
         }
+    }
+
+    public static function getnombreUtilisateur(){
+        global $db;
+        $reponse = $db->prepare('SELECT COUNT(*) AS nombreUtilisateur FROM utilisateur');
+        $reponse->execute();
+        $resultat = $reponse->fetch();
+        $reponse->closeCursor();
+        $nombreUtilisateur = (int) $resultat['nombreUtilisateur'];
+        return $nombreUtilisateur;
     }
 
     public static function verifierSiUtilisateurExiste($login, $password){
