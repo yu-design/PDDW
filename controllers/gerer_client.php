@@ -10,13 +10,19 @@
     }else{
         $pageCourrante = 1;
     }
-
     $nombreUtilisateur = utilisateur::getnombreUtilisateur();
     $nombreUtilisateurparPage = 20;
     $pages = ceil($nombreUtilisateur/$nombreUtilisateurparPage);
     $premierParPage = ($pageCourrante*$nombreUtilisateurparPage)-$nombreUtilisateurparPage;
-    $utilisateur = Utilisateur::getAll($pages, $premierParPage);
-
+    $utilisateurs = Utilisateur::getAll($pages, $premierParPage);
+    
+    if(!empty($_POST)){
+        $_SESSION['loginModif'] = $_POST['login'];
+        $utilisateurModif = utilisateur::getUtilisateurParLogin($_POST['login']);
+        $_SESSION['passModif'] = $utilisateurModif->Pass;
+        header("Location: ".ROOT_PATH."afficher_utilisateur");
+    }
+    
     navControl();
     include 'views/gerer_client.php';
     include 'views/includes/main.php';

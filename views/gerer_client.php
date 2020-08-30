@@ -14,18 +14,20 @@
                     <td>Edition</td>
                 </thead>
                 <tbody>
-                    <?php foreach($utilisateur as $utilisateur){ ?>
+                    <?php foreach($utilisateurs as $utilisateur){ ?>
                         <tr>
                             <td><?= $utilisateur->ID?></td>
                             <td><?= $utilisateur->Login?></td>
                             <td><?= $utilisateur->Nom?></td>
                             <td><?= $utilisateur->Prenom?></td>
                             <td><?= $utilisateur->AdresseMail?></td>
-                            <td><a href="<?=ROOT_PATH?>afficher_utilisateur">
-                                    <?php if(($_SESSION['role'] == 2) && (($utilisateur->RoleUtilisateur == 3)||($_SESSION['login']))): ?>Editer        <!--Vendeur-->
-                                    <?php elseif(($_SESSION['role'] == 1) && (($utilisateur->RoleUtilisateur != 1)||($_SESSION['login']))): ?>Editer    <!--Admin-->
-                                    <?php endif ?>
-                                </a>
+                            <td>
+                                <form action="<?=ROOT_PATH.'gerer_client'?>" method="POST">
+                                    <input type="text" class="form-control" value="<?=$utilisateur->Login?>" name="login" hidden>
+                                    <?php if($_SESSION['role'] == 2): ?><button type="submit" class="btn btn-primary" <?php if($utilisateur->RoleUtilisateur_ID != 3){ echo "disabled";} ?> >Editer</button>
+                                    <?php elseif($_SESSION['role'] == 1): ?><button type="submit" class="btn btn-primary" <?php if($utilisateur->RoleUtilisateur_ID == 1){ echo "disabled";} ?> >Editer</button>
+                                    <?php endif?>
+                                </form>
                             </td>
                         </tr>
                     <?php } ?>

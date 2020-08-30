@@ -17,6 +17,9 @@
         
         // Actif 1 = actif || 0 = inactif
         $actif=(empty($_POST['actif']))?1:0;
+
+        // role = 1 ou 2 ou 3
+        $role=$_SESSION['role'];
         
         // vérifier que le login est correct
         if(!empty($_POST['login'])){
@@ -40,7 +43,7 @@
                                         $passwordValide = $utilisateur->Pass;
                                         // Enregistrement
                                         $_SESSION['login']=$loginValide;
-                                        utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                                        utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                                         $messageInfo = "Votre profil a bien été mis à jour.";
                                         header("Location: ".ROOT_PATH);
                                         exit();
@@ -51,7 +54,7 @@
                                             $passwordValide = $_POST['password'];
                                             // Enregistrement
                                             $_SESSION['login']=$loginValide;
-                                            utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                                            utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                                             $messageInfo = "Votre profil a bien été mis à jour.";
                                             header("Location: ".ROOT_PATH);
                                             exit();
@@ -61,7 +64,7 @@
                                     $passwordValide = $utilisateur->Pass;
                                     //Enregistrement
                                     $_SESSION['login']=$loginValide;
-                                    utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                                    utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                                     $messageInfo = "Votre profil a bien été mis à jour.";
                                     header("Location: ".ROOT_PATH);
                                     exit();
@@ -81,7 +84,7 @@
                                     $passwordValide = $utilisateur->Pass;
                                     // Enregistrement
                                     $_SESSION['login']=$loginValide;
-                                    utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                                    utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                                     $messageInfo = "Votre profil a bien été mis à jour.";
                                     header("Location: ".ROOT_PATH);
                                     exit();
@@ -92,7 +95,7 @@
                                         $passwordValide = $_POST['password'];
                                         // Enregistrement
                                         $_SESSION['login']=$loginValide;
-                                        utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                                        utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                                         $messageInfo = "Votre profil a bien été mis à jour.";
                                         header("Location: ".ROOT_PATH);
                                         exit();
@@ -102,7 +105,7 @@
                                 $passwordValide = $utilisateur->Pass;
                                 //Enregistrement
                                 $_SESSION['login']=$loginValide;
-                                utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                                utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                                 $messageInfo = "Votre profil a bien été mis à jour.";
                                 header("Location: ".ROOT_PATH);
                                 exit();
@@ -132,7 +135,7 @@
                                     $passwordValide = $utilisateur->Pass;
                                     // Enregistrement
                                     $_SESSION['login']=$loginValide;
-                                    utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                                    utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                                     $messageInfo = "Votre profil a bien été mis à jour.";
                                     header("Location: ".ROOT_PATH);
                                     exit();
@@ -143,7 +146,7 @@
                                         $passwordValide = $_POST['password'];
                                         // Enregistrement
                                         $_SESSION['login']=$loginValide;
-                                        utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                                        utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                                         $messageInfo = "Votre profil a bien été mis à jour.";
                                         header("Location: ".ROOT_PATH);
                                         exit();
@@ -153,7 +156,7 @@
                                 $passwordValide = $utilisateur->Pass;
                                 //Enregistrement
                                 $_SESSION['login']=$loginValide;
-                                utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                                utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                                 $messageInfo = "Votre profil a bien été mis à jour.";
                                 header("Location: ".ROOT_PATH);
                                 exit();
@@ -173,7 +176,7 @@
                                 $passwordValide = $utilisateur->Pass;
                                 // Enregistrement
                                 $_SESSION['login']=$loginValide;
-                                utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                                utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                                 $messageInfo = "Votre profil a bien été mis à jour.";
                                 header("Location: ".ROOT_PATH);
                                 exit();
@@ -184,7 +187,7 @@
                                     $passwordValide = $_POST['password'];
                                     // Enregistrement
                                     $_SESSION['login']=$loginValide;
-                                    utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                                    utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                                     $messageInfo = "Votre profil a bien été mis à jour.";
                                     header("Location: ".ROOT_PATH);
                                     exit();
@@ -194,7 +197,7 @@
                             $passwordValide = $utilisateur->Pass;
                             //Enregistrement
                             $_SESSION['login']=$loginValide;
-                            utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                            utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
                             $messageInfo = "Votre profil a bien été mis à jour.";
                             header("Location: ".ROOT_PATH);
                             exit();
@@ -264,7 +267,7 @@
         }
 
         $_SESSION['login']=$loginValide;
-        utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+        utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
         $messageInfo = "Votre profil a bien été mis à jour.";
         header("Location: ".ROOT_PATH);
         exit();
@@ -273,7 +276,7 @@
         /*
         function requeteModification(){
             $_SESSION['login']=$loginValide;
-            utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+            utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_SESSION['role'], $actif);
             $messageInfo = "Votre profil a bien été mis à jour.";
             header("Location: ".ROOT_PATH);
             exit();
