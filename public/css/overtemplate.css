@@ -48,9 +48,25 @@ p{
     color:#aaa;
 }
 
+.center{
+    margin: auto;
+    text-align: center;
+}
+
 .entreBouton{
     width:10px;
 }
+
+.container_art{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    margin-top: 5%;
+  }
+
 /*
 .background-header404{
     background-image: url(../../public/images/background-404.jpg);

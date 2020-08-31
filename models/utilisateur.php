@@ -39,15 +39,31 @@ class Utilisateur{
     }
 
     //Permet de récupérer tous les utilisateurs dans la db -> a ne pas forcément garder dans le futur (autre stratégie)
-    public static function getAll($pages, $premierParPage){
+    public static function getAll(){
         global $db;
         try{
-            $reponce = $db->query('SELECT * FROM utilisateur LIMIT 0, 7;');
-//            $reponce->bindValue(':premierParPage', $premierParPage, PDO::PARAM_INT);
-//            $reponce->bindValue(':pages', $pages, PDO::PARAM_INT);
-            $reponce->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
-            $datas = $reponce->fetchAll();
-            $reponce->closeCursor();
+            $reponse = $db->query('SELECT * FROM utilisateur;');
+            $reponse->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
+            $datas = $reponse->fetchAll();
+            $reponse->closeCursor();
+
+            return $datas;
+        }catch (Exception $e){
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+
+    public static function getAllPagination($pages, $premierParPage){
+        global $db;
+        try{
+            $reponse = $db->prepare('SELECT * FROM utilisateur LIMIT '.$premierParPage.', '.$pages.';');
+            //$reponse->execute([':premierParPage' => $premierParPage, ':pages' => $pages]);
+            //$reponce->bindValue(':premierParPage', $premierParPage, PDO::PARAM_INT);
+            //$reponce->bindValue(':pages', $pages, PDO::PARAM_INT);
+            $reponse->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
+            $datas = $reponse->fetchAll();
+            $reponse->closeCursor();
 
             return $datas;
         }catch (Exception $e){

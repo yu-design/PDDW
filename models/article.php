@@ -40,9 +40,7 @@ class Article{
     public static function getAll(){
         global $db;
         try{
-            $reponce = $db->query('SELECT * FROM article LIMIT 0, 7;');
-//            $reponce->bindValue(':premierParPage', $premierParPage, PDO::PARAM_INT);
-//            $reponce->bindValue(':pages', $pages, PDO::PARAM_INT);
+            $reponce = $db->query('SELECT * FROM article');
             $reponce->setFetchMode(PDO::FETCH_CLASS, 'article');
             $datas = $reponce->fetchAll();
             $reponce->closeCursor();
@@ -53,7 +51,63 @@ class Article{
         }
     }
 
-    public static function getnombrearticle(){
+    public static function getAllActive(){
+        global $db;
+        try{
+            $reponce = $db->query('SELECT * FROM article WHERE Actif = 1');
+            $reponce->setFetchMode(PDO::FETCH_CLASS, 'article');
+            $datas = $reponce->fetchAll();
+            $reponce->closeCursor();
+
+            return $datas;
+        }catch (Exception $e){
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    public static function getAllParType($pages, $premierParPage, $TypeArticle_ID){
+        global $db;
+        try{
+            $reponce = $db->query('SELECT * FROM article WHERE TypeArticle_ID == :TypeArticle_ID LIMIT 0, 2;');
+//            $reponce->bindValue(':premierParPage', $premierParPage, PDO::PARAM_INT);
+//            $reponce->bindValue(':pages', $pages, PDO::PARAM_INT);
+            $reponse->execute([':TypeArticle_ID' => $TypeArticle_ID]);
+            $reponce->setFetchMode(PDO::FETCH_CLASS, 'article');
+            $datas = $reponce->fetchAll();
+            $reponce->closeCursor();
+
+            return $datas;
+        }catch (Exception $e){
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+/*
+    public static function getAllPagination($premierParPage, $pages){
+        global $db;
+        try{
+            $reponse = $db->query('SELECT * FROM article LIMIT '.$premierParPage.','.$pages.';');
+            $reponse->setFetchMode(PDO::FETCH_CLASS, 'article');
+            $datas = $reponse->fetchAll();
+            $reponse->closeCursor();
+
+            return $datas;
+        }catch (Exception $e){
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+*/
+    public static function getArticleParID($ID){
+        global $db;
+        $reponse = $db->prepare('SELECT * FROM Article WHERE ID = :ID AND Actif = 1');
+        $reponse->setFetchMode(PDO::FETCH_CLASS, 'article');
+        $reponse->execute([':ID' => $ID]);
+        $article = $reponse->fetch();
+        $reponse->closeCursor();
+        return $article;
+    }
+
+    public static function getNombreArticle(){
         global $db;
         $reponse = $db->prepare('SELECT COUNT(*) AS nombrearticle FROM Article');
         $reponse->execute();
@@ -63,25 +117,25 @@ class Article{
         return $nombrearticle;
     }
 
-    public static function verifierSiarticleExiste($login, $password){
+    public static function verifierSiarticleExiste($EAN, $ISBN){
         global $db;
-        $reponse = $db->prepare('SELECT * FROM Article WHERE Login = :login AND Actif = 1');
+        $reponse = $db->prepare('SELECT * FROM Article WHERE (EAN = :EAN)||(ISBN = :ISBN) AND Actif = 1');
         $reponse->setFetchMode(PDO::FETCH_CLASS, 'article');
-        $reponse->execute([':login' => $login]);
-        $user = $reponse->fetch();
+        $reponse->execute([':EAN' => $EAN],[':ISBN' => $ISBN]);
+        $article = $reponse->fetch();
         $reponse->closeCursor();
-        return $user;
+        return $article;
     }
 
-    public static function getarticleParISBN($login){
+    public static function getarticleParISBN($ISBN){
         global $db;
         try{
-            $reponse = $db->prepare('SELECT * FROM Article WHERE ISBN = :login');
+            $reponse = $db->prepare('SELECT * FROM Article WHERE ISBN = :ISBN');
             $reponse->setFetchMode(PDO::FETCH_CLASS, 'article');
-            $reponse->execute([':login' => $login]);
-            $user = $reponse->fetch();
+            $reponse->execute([':ISBN' => $ISBN]);
+            $article = $reponse->fetch();
             $reponse->closeCursor();
-            return $user;
+            return $article;
         }catch(Exception $ex){
 
             die("Erreur : ".$ex->getMesage());
@@ -89,37 +143,31 @@ class Article{
 
     }
 
-    public static function getarticleParEAN($mail){
+    public static function getarticleParEAN($EAN){
         global $db;
-        $reponse = $db->prepare('SELECT AdresseMail FROM Article WHERE EAN = :EAN AND Actif = 1');
+        $reponse = $db->prepare('SELECT * FROM Article WHERE EAN = :EAN AND Actif = 1');
         $reponse->setFetchMode(PDO::FETCH_CLASS, 'article');
-        $reponse->execute([':mail' => $mail]);
-        $user = $reponse->fetch();
+        $reponse->execute([':EAN' => $EAN]);
+        $article = $reponse->fetch();
         $reponse->closeCursor();
-        return $user;
+        return $article;
     }
 
-    public static function ajouterNouveauarticle($EAN, $ISBN, $TypeArticle_id, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Actif){
+    public static function ajouterNouveauarticle($EAN, $ISBN, $TypeArticle_id, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution){
         global $db;
-        $reponse = $db->prepare('INSERT INTO article (Login, AdresseMail, Nom, Prenom, Pass, Rolearticle_ID, Actif)
-                                VALUES (:login, :email, :nom, :prenom, :password, :role, :actif )');
+        $reponse = $db->prepare('INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Parution, Actif)
+                                VALUES (:EAN, :ISBN, :TypeArticle_id, :Titre, :Auteur, :Dessinateur, :Edition, :Collection, :Prix, :Parution, :actif)');
         $reponse->setFetchMode(PDO::FETCH_CLASS, 'article');
-        $reponse->execute([':login' => $login, ':email' => $adresseMail, ':nom' => $nom, ':prenom' => $prenom, ':password' => password_hash($password, PASSWORD_DEFAULT), ':role' => '3', ':actif' => '1']);
+        $reponse->execute([':EAN' => $EAN, ':ISBN' => $ISBN, ':TypeArticle_id' => $TypeArticle_id, ':Titre' => $Titre, ':Auteur' => $Auteur, ':Dessinateur' => $Dessinateur, ':Edition' => $Edition, ':Collection' => $Collection, ':Prix' => $Prix, ':Parution' => $Parution, ':actif' => '1']);
         $reponse->closeCursor();
     }
 
-    public static function modifierarticle($id, $login, $prenom, $nom, $pseudo, $adresseMail, $password, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $role, $actif) {
+    public static function modifierarticle($EAN, $ISBN, $TypeArticle_id, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Actif) {
         global $db;
-        $reponse = $db->prepare('UPDATE article SET Login = :login, Prenom = :prenom, Nom = :nom, Pseudo = :pseudo, AdresseMail = :mail, Pass = :password, DateNaissance = :dnaissance, Adresse = :adresse, CP = :cp, Ville = :ville, NumTelephone = :numtel, Rolearticle_ID = :role, Actif = :actif WHERE ID = '.$id);
-        if($password == $article->Pass){
-            $reponse->execute([':login' => $login, ':prenom' => $prenom, ':nom' => $nom, ':pseudo' => $pseudo, ':mail' => $adresseMail, ':password' => $password, ':dnaissance' => $dateNaissance, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, 'role' => $role, ':actif' => $actif]);
-        }
-        else {
-            $reponse->execute([':login' => $login, ':prenom' => $prenom, ':nom' => $nom, ':pseudo' => $pseudo, ':mail' => $adresseMail, ':password' => password_hash($password, PASSWORD_DEFAULT), ':dnaissance' => $dateNaissance, ':adresse' => $adresse, ':cp' => $cp, ':ville' => $ville, ':numtel' => $numTelephone, 'role' => $role, ':actif' => $actif]);
-        }
+        $reponse = $db->prepare('UPDATE article SET EAN = :EAN, ISBN = :ISBN, TypeArticle_ID = :TypeArticle_ID, Titre = :Titre, Auteur = :Auteur, Dessinateur = :Dessinateur, Edition = :Edition, Collection = :Collection, Prix = :Prix, Parution = :Parution, Actif = :Actif WHERE ID = '.$id);
+        $reponse->execute([':EAN' => $EAN, ':ISBN' => $ISBN, ':TypeArticle_ID' => $TypeArticle_ID, ':Titre' => $Titre, ':Auteur' => $Auteur, ':Dessinateur' => $Dessinateur, ':Edition' => $Edition, ':Collection' => $Collection, ':Prix' => $Prix, ':Parution' => $Parution, ':actif' => $actif]);
         $reponse->closeCursor();
     }
-
 }
 
 ?>

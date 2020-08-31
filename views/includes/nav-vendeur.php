@@ -14,6 +14,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?=ROOT_PATH?>presentation">Présentation</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=ROOT_PATH?>articles">Articles</a>
+                    </li>
+                    <!--
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Articles
@@ -21,15 +25,14 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?=ROOT_PATH?>nouveautes_article">Nouveautés</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Bandes dessinées</a>
-                            <a class="dropdown-item" href="#">Mangas</a>
-                            <a class="dropdown-item" href="#">Comics</a>
-                            <a class="dropdown-item" href="#">Romans</a>
+                            $_SESSION['typeArticleAffichage']=1
+                            <a class="dropdown-item" name='1' href="<?=ROOT_PATH?>articles">Bandes dessinées</a>
+                            <a class="dropdown-item" name='2' href="<?=ROOT_PATH?>articles">Mangas</a>
+                            <a class="dropdown-item" name='3' href="<?=ROOT_PATH?>articles">Comics</a>
+                            <a class="dropdown-item" name='4' href="<?=ROOT_PATH?>articles">Romans</a>
                         </div>
                     </li>
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Contact</a>
-                    </li>-->
+                    -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Profil
@@ -39,9 +42,9 @@
                         <a class="dropdown-item" href="<?=ROOT_PATH?>historique_commande">Historique de commande</a>
                             <div class="dropdown-divider"></div>
                             <span class="dropdown-item" >Administration</span>
-                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>valider_commande">Valider commande</a>
-                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>gerer_article">Gestion article</a>
-                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>gerer_client">Gestion client</a>
+                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>afficher_commande">Valider commande</a>
+                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>afficher_article">Gestion article</a>
+                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>afficher_utilisateur">Gestion client</a>
                         </div>
                     </li>
                     <li class="nav-item">

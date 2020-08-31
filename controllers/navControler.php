@@ -22,4 +22,11 @@ function navControl(){
 
     }
 }
+
+/* Idée de pouvoir récupérer le type d'article pour afficher via la page article
+function verificationTypeArticle(){
+
+}
+*/
+
 ?>

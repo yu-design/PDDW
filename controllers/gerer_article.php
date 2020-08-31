@@ -1,13 +1,13 @@
 <?php
-    $titre = "Gestion des articles";
     include 'views/includes/head.php';
     require 'navControler.php';
-    require 'helpers.php';
+    require 'models/article.php';
+
+    $article = article::getArticleParID($_SESSION['IDArticle']);
+    $titre = "Gérer articles ".$article->Titre;
     navControl();
-
-    $Utilisateur = Utilisateur::getUtilisateurParLogin($_SESSION['login']);
-    
-
-    include 'views/historique_commande.php';
+    include 'views/gerer_article.php';
     include 'views/includes/main.php';
     include 'views/includes/footer.php';
+
+?>
