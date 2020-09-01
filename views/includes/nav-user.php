@@ -38,7 +38,7 @@
                             Profil
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<?=ROOT_PATH?>modifier_utilisateur">Gestion profil</a>
+                            <a class="dropdown-item" href="<?=ROOT_PATH.'utilisateurs/'.$_SESSION['login']?>">Gestion profil</a>
                             <a class="dropdown-item" href="<?=ROOT_PATH?>historique_commande">Historique de commande</a>
                         </div>
                     </li>

@@ -65,38 +65,6 @@ class Article{
         }
     }
 
-    public static function getAllParType($pages, $premierParPage, $TypeArticle_ID){
-        global $db;
-        try{
-            $reponce = $db->query('SELECT * FROM article WHERE TypeArticle_ID == :TypeArticle_ID LIMIT 0, 2;');
-//            $reponce->bindValue(':premierParPage', $premierParPage, PDO::PARAM_INT);
-//            $reponce->bindValue(':pages', $pages, PDO::PARAM_INT);
-            $reponse->execute([':TypeArticle_ID' => $TypeArticle_ID]);
-            $reponce->setFetchMode(PDO::FETCH_CLASS, 'article');
-            $datas = $reponce->fetchAll();
-            $reponce->closeCursor();
-
-            return $datas;
-        }catch (Exception $e){
-            die('Erreur : '.$e->getMessage());
-        }
-    }
-
-/*
-    public static function getAllPagination($premierParPage, $pages){
-        global $db;
-        try{
-            $reponse = $db->query('SELECT * FROM article LIMIT '.$premierParPage.','.$pages.';');
-            $reponse->setFetchMode(PDO::FETCH_CLASS, 'article');
-            $datas = $reponse->fetchAll();
-            $reponse->closeCursor();
-
-            return $datas;
-        }catch (Exception $e){
-            die('Erreur : '.$e->getMessage());
-        }
-    }
-*/
     public static function getArticleParID($ID){
         global $db;
         $reponse = $db->prepare('SELECT * FROM Article WHERE ID = :ID');
@@ -107,15 +75,6 @@ class Article{
         return $article;
     }
 
-    public static function getNombreArticle(){
-        global $db;
-        $reponse = $db->prepare('SELECT COUNT(*) AS nombrearticle FROM Article');
-        $reponse->execute();
-        $resultat = $reponse->fetch();
-        $reponse->closeCursor();
-        $nombrearticle = (int) $resultat['nombrearticle'];
-        return $nombrearticle;
-    }
 
     public static function verifierSiarticleExiste($EAN, $ISBN){
         global $db;
@@ -169,5 +128,51 @@ class Article{
         $reponse->closeCursor();
     }
 }
+
+/*
+Pas eu l'occasion de le présenter :
+
+    public static function getNombreArticle(){
+        global $db;
+        $reponse = $db->prepare('SELECT COUNT(*) AS nombrearticle FROM Article');
+        $reponse->execute();
+        $resultat = $reponse->fetch();
+        $reponse->closeCursor();
+        $nombrearticle = (int) $resultat['nombrearticle'];
+        return $nombrearticle;
+    }
+
+    public static function getAllPagination($premierParPage, $pages){
+        global $db;
+        try{
+            $reponse = $db->query('SELECT * FROM article LIMIT '.$premierParPage.','.$pages.';');
+            $reponse->setFetchMode(PDO::FETCH_CLASS, 'article');
+            $datas = $reponse->fetchAll();
+            $reponse->closeCursor();
+
+            return $datas;
+        }catch (Exception $e){
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    public static function getAllParType($pages, $premierParPage, $TypeArticle_ID){
+        global $db;
+        try{
+            $reponce = $db->query('SELECT * FROM article WHERE TypeArticle_ID == :TypeArticle_ID LIMIT 0, 2;');
+//          $reponce->bindValue(':premierParPage', $premierParPage, PDO::PARAM_INT);
+//          $reponce->bindValue(':pages', $pages, PDO::PARAM_INT);
+            $reponse->execute([':TypeArticle_ID' => $TypeArticle_ID]);
+            $reponce->setFetchMode(PDO::FETCH_CLASS, 'article');
+            $datas = $reponce->fetchAll();
+            $reponce->closeCursor();
+
+            return $datas;
+        }catch (Exception $e){
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+*/
 
 ?>

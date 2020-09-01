@@ -30,7 +30,7 @@
             </div>
             -->
             <div class="d-flex justify-content-around flex-wrap">
-                <?php foreach($articles as $article){ ?>
+                <?php foreach($articles as $article): ?>
                 <div class="card" style="width: 16rem;">
                     <img class="card-img-top" src="public/images/articles/<?= $article->Image?>" alt="Card image cap">
                     <div class="card-body">
@@ -45,9 +45,8 @@
                             <button type="submit" class="btn btn-primary">Afficher</button>
                         </form>
                         -->
-                        <a href="<?= ROOT_PATH.'article_description/'.$article->id?>" class="btn btn-primary">Afficher<a>
-                        <!--<a href="<?= ROOT_PATH.'manga/'.$manga->id ?>" class="btn btn-primary">Voir le détail</a>-->
-                        <br/>
+                        <a href="<?= ROOT_PATH ?>articles/<?=$article->ID?>" class="btn btn-primary">Afficher<a>
+                        <br/><br/>
                         <!--
                         <form action="<?= ROOT_PATH.'articles'?>" method="POST">
                             <input type="text" class="form-control" value="<?=$article->ID?>" name="panier" hidden>
@@ -56,7 +55,7 @@
                         <a href="<?= ROOT_PATH ?>panier/<?= $article->id ?>/ajouter" class="btn btn-primary">Ajouter au panier<a>
                     </div>
                 </div>
-                <?php } ?>
+                <?php endforeach ?>
             </div>
         </section>
     </div>

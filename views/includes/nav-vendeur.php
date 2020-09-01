@@ -38,13 +38,13 @@
                             Profil
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<?=ROOT_PATH?>modifier_utilisateur">Gestion profil</a>
-                        <a class="dropdown-item" href="<?=ROOT_PATH?>historique_commande">Historique de commande</a>
+                            <a class="dropdown-item" href="<?=ROOT_PATH.'utilisateurs/'.$_SESSION['login']?>">Gestion profil</a>
+                            <a class="dropdown-item" href="<?=ROOT_PATH?>historique_commande">Historique de commande</a>
                             <div class="dropdown-divider"></div>
                             <span class="dropdown-item" >Administration</span>
-                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>afficher_commande">Valider commande</a>
-                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>afficher_article">Gestion article</a>
-                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>afficher_utilisateur">Gestion client</a>
+                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>commandes">Valider commande</a>
+                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH.'articles//AdminArticle'?>">Gestion article</a>
+                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>utilisateurs">Gestion client</a>
                         </div>
                     </li>
                     <li class="nav-item">

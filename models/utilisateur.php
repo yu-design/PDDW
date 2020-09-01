@@ -53,34 +53,6 @@ class Utilisateur{
         }
     }
 
-
-    public static function getAllPagination($pages, $premierParPage){
-        global $db;
-        try{
-            $reponse = $db->prepare('SELECT * FROM utilisateur LIMIT '.$premierParPage.', '.$pages.';');
-            //$reponse->execute([':premierParPage' => $premierParPage, ':pages' => $pages]);
-            //$reponce->bindValue(':premierParPage', $premierParPage, PDO::PARAM_INT);
-            //$reponce->bindValue(':pages', $pages, PDO::PARAM_INT);
-            $reponse->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
-            $datas = $reponse->fetchAll();
-            $reponse->closeCursor();
-
-            return $datas;
-        }catch (Exception $e){
-            die('Erreur : '.$e->getMessage());
-        }
-    }
-
-    public static function getnombreUtilisateur(){
-        global $db;
-        $reponse = $db->prepare('SELECT COUNT(*) AS nombreUtilisateur FROM utilisateur');
-        $reponse->execute();
-        $resultat = $reponse->fetch();
-        $reponse->closeCursor();
-        $nombreUtilisateur = (int) $resultat['nombreUtilisateur'];
-        return $nombreUtilisateur;
-    }
-
     public static function verifierSiUtilisateurExiste($login, $password){
         global $db;
         $reponse = $db->prepare('SELECT * FROM utilisateur WHERE Login = :login AND Actif = 1');
@@ -104,7 +76,6 @@ class Utilisateur{
 
             die("Erreur : ".$ex->getMesage());
         }
-
     }
 
     public static function getUtilisateurParMail($mail){
@@ -112,6 +83,16 @@ class Utilisateur{
         $reponse = $db->prepare('SELECT AdresseMail FROM utilisateur WHERE AdresseMail = :mail AND Actif = 1');
         $reponse->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
         $reponse->execute([':mail' => $mail]);
+        $user = $reponse->fetch();
+        $reponse->closeCursor();
+        return $user;
+    }
+
+    public static function getUtilisateurParID($ID){
+        global $db;
+        $reponse = $db->prepare('SELECT * FROM utilisateur WHERE ID = :ID');
+        $reponse->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
+        $reponse->execute([':ID' => $ID]);
         $user = $reponse->fetch();
         $reponse->closeCursor();
         return $user;
@@ -151,5 +132,37 @@ class Utilisateur{
     }
 
 }
+
+/*
+Ce que j'ai essayé de faire mais pas réussi :
+
+    public static function getnombreUtilisateur(){
+        global $db;
+        $reponse = $db->prepare('SELECT COUNT(*) AS nombreUtilisateur FROM utilisateur');
+        $reponse->execute();
+        $resultat = $reponse->fetch();
+        $reponse->closeCursor();
+        $nombreUtilisateur = (int) $resultat['nombreUtilisateur'];
+        return $nombreUtilisateur;
+    }
+
+    public static function getAllPagination($pages, $premierParPage){
+        global $db;
+        try{
+            $reponse = $db->prepare('SELECT * FROM utilisateur LIMIT '.$premierParPage.', '.$pages.';');
+            //$reponse->execute([':premierParPage' => $premierParPage, ':pages' => $pages]);
+            //$reponce->bindValue(':premierParPage', $premierParPage, PDO::PARAM_INT);
+            //$reponce->bindValue(':pages', $pages, PDO::PARAM_INT);
+            $reponse->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
+            $datas = $reponse->fetchAll();
+            $reponse->closeCursor();
+
+            return $datas;
+        }catch (Exception $e){
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+*/
 
 ?>

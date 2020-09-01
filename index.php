@@ -23,7 +23,7 @@ define('REQ_TYPE_ID', $segments[1] ?? Null);
 define('REQ_ACTION', $segments[2] ?? Null);
 
 // Structure controller: {REQ_TYPE}.php ou {REQ_TYPE}_{REQ_ACTION}.php
-$file = 'controllers/'.REQ_TYPE.(REQ_ACTION ? '_'.REQ_ACTION : '').'.php'; // Si REQ_ACTION alors controllers/{REQ_TYPE}_{REQ_ACTION}.php, si pas alors controllers/{REQ_TYPE}.php
+$file = 'controllers/'.REQ_TYPE.'.php'; // Si REQ_ACTION alors controllers/{REQ_TYPE}_{REQ_ACTION}.php, si pas alors controllers/{REQ_TYPE}.php
 
 if(file_exists($file)){ // On vérifie que le fichier php existe
     require $file;

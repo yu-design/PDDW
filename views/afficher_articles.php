@@ -35,11 +35,7 @@
                             <td><?= $article->Parution?></td>
                             <td><?= $article->Actif?></td>
                             <td>
-                            <form action="<?=ROOT_PATH.'afficher_article'?>" method="POST">
-                                <input type="text" class="form-control" value="<?=$article->ID?>" name="ID" hidden>
-                                <input type="text" class="form-control" value="<?=$article->Titre?>" name="titreArticle" hidden>
-                                <button type="submit" class="btn btn-primary">Editer</button>
-                            </form>
+                                <a href="<?=ROOT_PATH.'articles/'.$article->ID.'/Modifier'?>" class="btn btn-primary">Editer</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -70,7 +66,7 @@
                 </nav>
             </div>
             -->
-            <a href="<?=ROOT_PATH.'Ajouter_article'?>" class='btn btn-primary'>Ajouter un nouvel article</a>
+            <a href="<?=ROOT_PATH.'Ajouter_article//AfficherAjouter'?>" class='btn btn-primary'>Ajouter un nouvel article</a>
         </section>
     </div>
 </main>

@@ -16,13 +16,7 @@
             <p></p>
             <a href=<?=ROOT_PATH."articles"?> class="btn btn-primary">Retour</a>
             <p></p>
-            <!--
-            <form action="<?=ROOT_PATH.'article_description'?>" method="POST">
-                <input type="text" class="form-control" value="<?=$article->ID?>" name="pannier" hidden>
-                <button type="submit" class="btn btn-primary">Ajouter au pannier</button>
-            </form>
-            -->
-            <a href="<?=ROOT_PATH?>panier/<?= $manga->id ?>/add" class="btn btn-primary">Ajouter au panier<a>
+            <a href="<?=ROOT_PATH?>panier/<?= $article->ID ?>/add" class="btn btn-primary">Ajouter au panier<a>
         </div>
     </div>
 <?php

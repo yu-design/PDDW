@@ -3,7 +3,7 @@
 <div class="padding-top100"></div>
 Vous pouvez modifier les informations liées à l'article (Tous les champs sont obligatoires).
 
-<form action="<?=ROOT_PATH.'gerer_article'?>" method="POST" enctype="multipart/form-data">
+<form action="<?=ROOT_PATH.'articles/'.$article->ID.'/Modifier'?>" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="idEAN">EAN :</label>
         <input type="text" class="form-control" id="idEAN" name="EAN" value="<?=$article->EAN?>">
@@ -51,7 +51,7 @@ Vous pouvez modifier les informations liées à l'article (Tous les champs sont 
     </div>
     <div class="form-group">
         <label for="idcouverture">Couverture :</label>
-        <img class="card-img-top" src="public/images/articles/<?= $article->Image?>" alt="Card image cap" style="width: 16rem;">
+        <img class="card-img-top" src="../../public/images/articles/<?=$article->Image?>" alt="Card image cap" style="width: 16rem;">
         <input type="file" name="couverture" id="idcouverture">
     </div>
     <div>
