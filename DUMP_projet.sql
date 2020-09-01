@@ -54,6 +54,7 @@ CREATE TABLE article(
 	Collection VARCHAR(255) NULL,
 	Prix FLOAT(11) NULL,
 	Parution DATE,
+	Image VARCHAR(255),
 	Actif BOOLEAN
 )ENGINE=INNODB;
 
@@ -95,11 +96,11 @@ INSERT INTO typeArticle (Nom) VALUES ('Comics');
 INSERT INTO typeArticle (Nom) VALUES ('Manga');
 INSERT INTO typeArticle (Nom) VALUES ('Roman');
 
-INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Actif)
-VALUES ('9782505015932', '978-2-505-01593-2', 1, 'Naruto collector Tome 1','Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, 1);
+INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Image, Actif)
+VALUES ('9782505015932', '978-2-505-01593-2', 1, 'Naruto collector Tome 1','Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, '1.jpg',1);
 
-INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Actif)
-VALUES ('9782505015949', '978-2-505-01594-9', 1, 'Naruto collector Tome 2', 'Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, 1);
+INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Image, Actif)
+VALUES ('9782505015949', '978-2-505-01594-9', 1, 'Naruto collector Tome 2', 'Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, '2.jpg',1);
 
-INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Actif)
-VALUES ('9782505016045', '978-2-505-01604-5', 1, 'Naruto collector Tome 3', 'Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, 1);
+INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Image, Actif)
+VALUES ('9782505016045', '978-2-505-01604-5', 1, 'Naruto collector Tome 3', 'Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, '3.jpg',1);

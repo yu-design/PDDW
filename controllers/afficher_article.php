@@ -21,6 +21,7 @@
     
     if(!empty($_POST)){
         $_SESSION['IDArticle'] = $_POST['ID'];
+        $_SESSION['TitreArticle'] = $_POST['titreArticle'];
         header("Location: ".ROOT_PATH."gerer_article");
     }
     

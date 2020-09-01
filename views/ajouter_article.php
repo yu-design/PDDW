@@ -53,6 +53,7 @@ Veuillez entrer les informations liées au nouvel article (Tous les champs sont 
         <!-- On limite le fichier à 100Ko -->
         <label for="idcouverture"></label>
         <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+        <input type="hidden" name="typeArticleImage" value="<?=$article->typeArticle_ID?>">
         Fichier : <input type="file" name="couverture" id="idcouverture">
     </div>
     <button type="submit" class="btn btn-primary">Ajouter article</button>

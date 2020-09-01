@@ -58,12 +58,12 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class=" d-none d-xl-block">
                         <div class="favorit-items">
-                            <i class="far fa-heart"></i>
+                            <a href="#"><i class="far fa-heart"></i></a>
                         </div>
                     </li>
                     <li>
                         <div class="shopping-card">
-                            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                            <a href="<?=ROOT_PATH?>panier"><i class="fas fa-shopping-cart"></i></a>
                         </div>
                     </li>
                     <div class="collapse navbar-collapse" id="navbarCollapse">

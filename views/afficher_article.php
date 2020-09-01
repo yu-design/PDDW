@@ -37,6 +37,7 @@
                             <td>
                             <form action="<?=ROOT_PATH.'afficher_article'?>" method="POST">
                                 <input type="text" class="form-control" value="<?=$article->ID?>" name="ID" hidden>
+                                <input type="text" class="form-control" value="<?=$article->Titre?>" name="titreArticle" hidden>
                                 <button type="submit" class="btn btn-primary">Editer</button>
                             </form>
                             </td>

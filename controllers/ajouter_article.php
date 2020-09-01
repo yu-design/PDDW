@@ -3,7 +3,7 @@
     include 'views/includes/head.php';
     require 'navControler.php';
     require 'models/article.php';
-    
+
     if(!empty($_POST)) {
         if(!empty($_POST['EAN']) && !empty($_POST['ISBN']) && !empty($_POST['typeArticle_ID']) && !empty($_POST['titre']) && !empty($_POST['auteur']) && !empty($_POST['dessinateur']) && !empty($_POST['edition']) && !empty($_POST['collection']) && !empty($_POST['prix']) && !empty($_POST['date'])){
             $EAN = article::getArticleParEAN($_POST['EAN']);
@@ -11,29 +11,38 @@
 
             if($EAN){
                 $messageErreur = "La référence EAN ".$_POST['EAN']." existe déjà...";
-            }
-            else if($ISBN){
+            }else if($ISBN){
                 $messageErreur = "La référence ISBN' ".$_POST['ISBN']." existe déjà...";
             }else if(($_POST['prix']) < 0){
                 $messageErreur = "Le prix ne peut pas être négatif !";
             }else if(($_POST['date']) > date('Y-m-d')){
                 $messageErreur = "La date ne peut pas être postérieur à la date courrante !";
-            }else if(isset($_FILES['couverture'])){
-                $dossier = 'upload/';
-                $fichier = basename($_FILES['avatar']['name']);
-                if(move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
-                {
-                    echo 'Upload effectué avec succès !';
+            // Traitement de l'ajout d'une image
+            }else if((isset($_FILES['couverture'])) && (!empty($_FILES['couverture']['name']))){
+                $tailleMaximale = 1048576;
+                $extensionsValides = array('png', 'gif', 'jpg', 'jpeg');
+                if($_FILES['couverture']['size'] <= $tailleMaximale){
+                    $extensionUpload = strtolower(substr(strrchr($_FILES['couverture']['name'],'.'), 1));
+                    if(in_array($extensionUpload,$extensionsValides)){
+                        $chemin = "public/images/articles/".$article->ID.".".$extensionUpload;
+                        $accepterFichier = move_uploaded_file($_FILES['couverture']['tmp_name'], $chemin);
+                        if($accepterFichier){
+                            $nomImage = $article->ID.'.'.$extensionUpload;
+                            article::ajouterNouveauArticle($_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date'], $nomImage);
+                            header("Location: ".ROOT_PATH."afficher_article");
+                            exit();
+                        }else{
+                            $messageErreur = "Une erreur s'est produite durant l'importation du fichier, veuillez réessayer ou inclure une autre image.";
+                        }
+                    }else{
+                        $messageErreur = "L'extension du fichier n'est pas supportée.<br/> Veuillez utiliser le format (jpg, jpeg, png ou gif).";
+                    }
+                }else{
+                    $messageErreur = "L'image de couverture ne doit pas dépasser 1 Mo";
                 }
-                else //Sinon (la fonction renvoie FALSE).
-                {
-                    echo 'Echec de l\'upload !';
-                }
-                article::ajouterNouveauArticle($_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date']);
-                header("Location: ".ROOT_PATH."afficher_article");
-                exit();
             }else{
-                article::ajouterNouveauArticle($_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date']);
+                $nomImage = null;
+                article::ajouterNouveauArticle($_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date'], $nomImage);
                 header("Location: ".ROOT_PATH."afficher_article");
                 exit();
             }

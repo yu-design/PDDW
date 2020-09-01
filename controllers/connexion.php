@@ -21,6 +21,7 @@
                 $_SESSION['mail'] = $utilisateur->AdresseMail;
                 $_SESSION['password'] = $utilisateur->Pass;
                 $_SESSION['role'] = $utilisateur->RoleUtilisateur_ID;
+                $_SESSION['panier'] = [];
                 header("Location: ".ROOT_PATH);
                 exit();
             }

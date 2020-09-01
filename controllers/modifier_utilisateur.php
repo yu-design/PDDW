@@ -21,8 +21,11 @@
         // role = 1 ou 2 ou 3
         $role=$_SESSION['role'];
         
-        // vérifier que le login est correct
-        if(!empty($_POST['login'])){
+        // vérifier que la date est correct
+        if(($_POST['anniversaire']) > date('Y-m-d')){
+            $messageErreur = "La date ne peut pas être postérieur à la date courrante !";
+        } // vérifier que le login est correct
+        else if(!empty($_POST['login'])){
             if($_POST['login'] != $_SESSION['login']){
                 $loginStatus = empty(utilisateur::getUtilisateurParLogin($_POST['login']))?true:false;
                 if($loginStatus==true){

@@ -2,7 +2,7 @@
 
 <div class="padding-top100"></div>
 Veuillez entrer vos coordonnées (Les champs avec une <span class="colorRed">*</span> sont obligatoires).
-    <form action="<?=ROOT_PATH.'afficher_utilisateur'?>" method="POST">
+    <form action="<?=ROOT_PATH.'gerer_utilisateur'?>" method="POST">
         <div class="form-group">
             <label for="idlogin">Login <span class="colorRed">*</span> :</label>
             <input type="text" class="form-control"  id="idlogin" placeholder="<?=$utilisateur->Login?>" value="<?=$utilisateur->Login?>" name="login">

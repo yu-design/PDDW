@@ -6,6 +6,7 @@
     require 'models/utilisateur.php';
     
     $recupUtilisateur = utilisateur::getUtilisateurParLogin($_SESSION['login']);
+    echo $_SESSION['panier'];
     
     navControl();
     include 'views/debug.php';

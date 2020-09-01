@@ -99,7 +99,7 @@ class Article{
 */
     public static function getArticleParID($ID){
         global $db;
-        $reponse = $db->prepare('SELECT * FROM Article WHERE ID = :ID AND Actif = 1');
+        $reponse = $db->prepare('SELECT * FROM Article WHERE ID = :ID');
         $reponse->setFetchMode(PDO::FETCH_CLASS, 'article');
         $reponse->execute([':ID' => $ID]);
         $article = $reponse->fetch();
@@ -153,19 +153,19 @@ class Article{
         return $article;
     }
 
-    public static function ajouterNouveauarticle($EAN, $ISBN, $TypeArticle_id, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution){
+    public static function ajouterNouveauArticle($EAN, $ISBN, $TypeArticle_id, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image){
         global $db;
-        $reponse = $db->prepare('INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Parution, Actif)
-                                VALUES (:EAN, :ISBN, :TypeArticle_id, :Titre, :Auteur, :Dessinateur, :Edition, :Collection, :Prix, :Parution, :actif)');
+        $reponse = $db->prepare('INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Parution, Image , Actif)
+                                VALUES (:EAN, :ISBN, :TypeArticle_id, :Titre, :Auteur, :Dessinateur, :Edition, :Collection, :Prix, :Parution, :Image, :Actif)');
         $reponse->setFetchMode(PDO::FETCH_CLASS, 'article');
-        $reponse->execute([':EAN' => $EAN, ':ISBN' => $ISBN, ':TypeArticle_id' => $TypeArticle_id, ':Titre' => $Titre, ':Auteur' => $Auteur, ':Dessinateur' => $Dessinateur, ':Edition' => $Edition, ':Collection' => $Collection, ':Prix' => $Prix, ':Parution' => $Parution, ':actif' => '1']);
+        $reponse->execute([':EAN' => $EAN, ':ISBN' => $ISBN, ':TypeArticle_id' => $TypeArticle_id, ':Titre' => $Titre, ':Auteur' => $Auteur, ':Dessinateur' => $Dessinateur, ':Edition' => $Edition, ':Collection' => $Collection, ':Prix' => $Prix, ':Parution' => $Parution, ':Image' => $Image, ':Actif' => '1']);
         $reponse->closeCursor();
     }
 
-    public static function modifierarticle($EAN, $ISBN, $TypeArticle_id, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Actif) {
+    public static function modifierArticle($ID, $EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $Actif) {
         global $db;
-        $reponse = $db->prepare('UPDATE article SET EAN = :EAN, ISBN = :ISBN, TypeArticle_ID = :TypeArticle_ID, Titre = :Titre, Auteur = :Auteur, Dessinateur = :Dessinateur, Edition = :Edition, Collection = :Collection, Prix = :Prix, Parution = :Parution, Actif = :Actif WHERE ID = '.$id);
-        $reponse->execute([':EAN' => $EAN, ':ISBN' => $ISBN, ':TypeArticle_ID' => $TypeArticle_ID, ':Titre' => $Titre, ':Auteur' => $Auteur, ':Dessinateur' => $Dessinateur, ':Edition' => $Edition, ':Collection' => $Collection, ':Prix' => $Prix, ':Parution' => $Parution, ':actif' => $actif]);
+        $reponse = $db->prepare('UPDATE article SET EAN = :EAN, ISBN = :ISBN, TypeArticle_ID = :TypeArticle_ID, Titre = :Titre, Auteur = :Auteur, Dessinateur = :Dessinateur, Edition = :Edition, Collection = :Collection, Prix = :Prix, Parution = :Parution, Image = :Image, Actif = :Actif WHERE ID = '.$ID);
+        $reponse->execute([':EAN' => $EAN, ':ISBN' => $ISBN, ':TypeArticle_ID' => $TypeArticle_ID, ':Titre' => $Titre, ':Auteur' => $Auteur, ':Dessinateur' => $Dessinateur, ':Edition' => $Edition, ':Collection' => $Collection, ':Prix' => $Prix, ':Parution' => $Parution, ':Image' => $Image, ':Actif' => $Actif]);
         $reponse->closeCursor();
     }
 }

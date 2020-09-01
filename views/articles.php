@@ -32,22 +32,28 @@
             <div class="d-flex justify-content-around flex-wrap">
                 <?php foreach($articles as $article){ ?>
                 <div class="card" style="width: 16rem;">
-                    <img class="card-img-top" src="public/images/articles/mangas/narutoCollectorTome1.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="public/images/articles/<?= $article->Image?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><?= $article->Titre ?></h5>
                         <p class="card-text">
                             Auteur : <?= $article->Auteur ?><br/>
                             Prix : <?= $article->Prix ?>
                         </p>
-                        <form action="<?=ROOT_PATH.'article'?>" method="POST">
+                        <!--
+                        <form action="<?= ROOT_PATH.'articles'?>" method="POST">
                             <input type="text" class="form-control" value="<?=$article->ID?>" name="IDArticle" hidden>
                             <button type="submit" class="btn btn-primary">Afficher</button>
                         </form>
+                        -->
+                        <a href="<?= ROOT_PATH.'article_description/'.$article->id?>" class="btn btn-primary">Afficher<a>
+                        <!--<a href="<?= ROOT_PATH.'manga/'.$manga->id ?>" class="btn btn-primary">Voir le détail</a>-->
                         <br/>
-                        <form action="<?=ROOT_PATH.'article'?>" method="POST">
-                            <input type="text" class="form-control" value="<?=$article->IDPannier?>" name="IDArticle" hidden>
+                        <!--
+                        <form action="<?= ROOT_PATH.'articles'?>" method="POST">
+                            <input type="text" class="form-control" value="<?=$article->ID?>" name="panier" hidden>
                             <button type="submit" class="btn btn-primary">Ajouter au pannier</button>
-                        </form>
+                        </form>-->
+                        <a href="<?= ROOT_PATH ?>panier/<?= $article->id ?>/ajouter" class="btn btn-primary">Ajouter au panier<a>
                     </div>
                 </div>
                 <?php } ?>

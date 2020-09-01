@@ -19,8 +19,11 @@
         
         $roleUtilisateur=$_POST['role'];
 
-        // vérifier que le login est correct
-        if(!empty($_POST['login'])){
+        // vérifier que la date est correct
+        if(($_POST['anniversaire']) > date('Y-m-d')){
+            $messageErreur = "La date ne peut pas être postérieur à la date courrante !";
+        } // vérifier que le login est correct
+        else if(!empty($_POST['login'])){
             if($_POST['login'] != $utilisateur->Login){
                 $loginStatus = empty(utilisateur::getUtilisateurParLogin($_POST['login']))?true:false;
                 if($loginStatus==true){
@@ -43,7 +46,7 @@
                                         $utilisateur->Login=$loginValide;
                                         utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                                         $messageInfo = "Le profil a bien été mis à jour.";
-                                        header("Location: ".ROOT_PATH."gerer_client");
+                                        header("Location: ".ROOT_PATH."afficher_utilisateur");
                                         exit();
                                     }else{
                                         if($_POST['password'] != $_POST['confirm_password']){
@@ -54,7 +57,7 @@
                                             $utilisateur->Login=$loginValide;
                                             utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                                             $messageInfo = "Le profil a bien été mis à jour.";
-                                            header("Location: ".ROOT_PATH."gerer_client");
+                                            header("Location: ".ROOT_PATH."afficher_utilisateur");
                                             exit();
                                         }
                                     }
@@ -64,7 +67,7 @@
                                     $utilisateur->Login=$loginValide;
                                     utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                                     $messageInfo = "Le profil a bien été mis à jour.";
-                                    header("Location: ".ROOT_PATH."gerer_client");
+                                    header("Location: ".ROOT_PATH."afficher_utilisateur");
                                     exit();
                                 }
                             }else{
@@ -84,7 +87,7 @@
                                     $utilisateur->Login=$loginValide;
                                     utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                                     $messageInfo = "Le profil a bien été mis à jour.";
-                                    header("Location: ".ROOT_PATH."gerer_client");
+                                    header("Location: ".ROOT_PATH."afficher_utilisateur");
                                     exit();
                                 }else{
                                     if($_POST['password'] != $_POST['confirm_password']){
@@ -95,7 +98,7 @@
                                         $utilisateur->Login=$loginValide;
                                         utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                                         $messageInfo = "Le profil a bien été mis à jour.";
-                                        header("Location: ".ROOT_PATH."gerer_client");
+                                        header("Location: ".ROOT_PATH."afficher_utilisateur");
                                         exit();
                                     }
                                 }
@@ -105,7 +108,7 @@
                                 $utilisateur->Login=$loginValide;
                                 utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                                 $messageInfo = "Le profil a bien été mis à jour.";
-                                header("Location: ".ROOT_PATH."gerer_client");
+                                header("Location: ".ROOT_PATH."afficher_utilisateur");
                                 exit();
                             }
                         }
@@ -135,7 +138,7 @@
                                     $utilisateur->Login=$loginValide;
                                     utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                                     $messageInfo = "Le profil a bien été mis à jour.";
-                                    header("Location: ".ROOT_PATH."gerer_client");
+                                    header("Location: ".ROOT_PATH."afficher_utilisateur");
                                     exit();
                                 }else{
                                     if($_POST['password'] != $_POST['confirm_password']){
@@ -146,7 +149,7 @@
                                         $utilisateur->Login=$loginValide;
                                         utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                                         $messageInfo = "Le profil a bien été mis à jour.";
-                                        header("Location: ".ROOT_PATH."gerer_client");
+                                        header("Location: ".ROOT_PATH."afficher_utilisateur");
                                         exit();
                                     }
                                 }
@@ -156,7 +159,7 @@
                                 $utilisateur->Login=$loginValide;
                                 utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                                 $messageInfo = "Le profil a bien été mis à jour.";
-                                header("Location: ".ROOT_PATH."gerer_client");
+                                header("Location: ".ROOT_PATH."afficher_utilisateur");
                                 exit();
                             }
                         }else{
@@ -176,7 +179,7 @@
                                 $utilisateur->Login=$loginValide;
                                 utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                                 $messageInfo = "Le profil a bien été mis à jour.";
-                                header("Location: ".ROOT_PATH."gerer_client");
+                                header("Location: ".ROOT_PATH."afficher_utilisateur");
                                 exit();
                             }else{
                                 if($_POST['password'] != $_POST['confirm_password']){
@@ -187,7 +190,7 @@
                                     $utilisateur->Login=$loginValide;
                                     utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                                     $messageInfo = "Le profil a bien été mis à jour.";
-                                    header("Location: ".ROOT_PATH."gerer_client");
+                                    header("Location: ".ROOT_PATH."afficher_utilisateur");
                                     exit();
                                 }
                             }
@@ -197,7 +200,7 @@
                             $utilisateur->Login=$loginValide;
                             utilisateur::modifierUtilisateurAdministration($utilisateur->ID, $loginValide, $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $mailValide, $passwordValide, $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $roleUtilisateur, $actif);
                             $messageInfo = "Le profil a bien été mis à jour.";
-                            header("Location: ".ROOT_PATH."gerer_client");
+                            header("Location: ".ROOT_PATH."afficher_utilisateur");
                             exit();
                         }
                     }
