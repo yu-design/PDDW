@@ -14,7 +14,7 @@
         <th scope="row"><?= $vente->DateTransaction ?></th>
         <td><?= $vente->MontantTotal ?></td>
         <td>
-          <a href="<?=ROOT_PATH?>commande/<?= $vente->ID ?>" class="btn btn-primary">Voir<a>
+          <a href="<?=ROOT_PATH?>vente/<?= $vente->ID ?>" class="btn btn-primary">Voir<a>
         <td>
     </tr>
 <?php endforeach ?>

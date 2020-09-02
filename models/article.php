@@ -76,11 +76,20 @@ class Article{
     }
 
 
+    public function getArticleFiltrerParID($liste) {
+        global $db;
+        $response = $db->prepare('SELECT * FROM article WHERE ID IN ('.implode(',',$liste).')');
+        $response->execute();
+        $article = $response->fetchAll(PDO::FETCH_CLASS, "article");
+        $response->closeCursor();
+        return $article;
+    }
+
     public static function verifierSiarticleExiste($EAN, $ISBN){
         global $db;
         $reponse = $db->prepare('SELECT * FROM Article WHERE (EAN = :EAN)||(ISBN = :ISBN) AND Actif = 1');
         $reponse->setFetchMode(PDO::FETCH_CLASS, 'article');
-        $reponse->execute([':EAN' => $EAN],[':ISBN' => $ISBN]);
+        $reponse->execute([':EAN' => $EAN, ':ISBN' => $ISBN]);
         $article = $reponse->fetch();
         $reponse->closeCursor();
         return $article;

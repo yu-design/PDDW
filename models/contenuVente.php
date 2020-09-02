@@ -11,7 +11,7 @@ class ContenuVente{
 
     public function getContenuVente($venteID) {
         global $db;
-        $response = $db->prepare('SELECT A.Titre, VA.PrixArticle, A.imageData FROM venteArticle as VA INNER JOIN article as A ON VA.Article_ID = A.ID where VA.ID =:id');
+        $response = $db->prepare('SELECT A.Titre, VA.PrixArticle, A.Image FROM venteArticle as VA INNER JOIN article as A ON VA.Article_ID = A.ID where VA.ID =:id');
         $response->execute([':id' => $venteID]);
         $contenu = $response->fetchAll(PDO::FETCH_CLASS, 'venteArticle');
         $response->closeCursor();

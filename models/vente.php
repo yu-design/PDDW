@@ -26,7 +26,6 @@ class Vente {
         }        
     }
 
-
     public function getListingVente(){
         global $db;
         $response = $db->prepare('SELECT vente.ID, DateTransaction, MontantTotal, Nom, Prenom FROM vente INNER JOIN utilisateur on utilisateur.ID = vente.Utilisateur_ID');
@@ -67,7 +66,7 @@ class Vente {
     }
 
     public function validerPanier($Utilisateur_ID,$MontantTotal){
-        self::ajouterVente($Utilisateur_ID,$MontantTotal,date("Y-m-d"));
+        self::ajouterVente($Utilisateur_ID,$MontantTotal,date("Y-m-d H:m:s"));
         $ventes = self::getListingVenteUtilisateur($Utilisateur_ID);
         $vente = $ventes[count($ventes)-1];
         return $vente->ID;
