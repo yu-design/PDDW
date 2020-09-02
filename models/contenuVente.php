@@ -4,9 +4,9 @@
 
 class ContenuVente{
 
-    public $titre;
-    public $prixDate;
-    public $imageData;
+    public $Titre;
+    public $PrixArticle;
+    public $Image;
 
 
     public function getContenuVente($venteID) {
@@ -19,11 +19,11 @@ class ContenuVente{
     }
 
     
-    public function ajouterContenuVente($listeArticle,$venteID) {
+    public function ajouterContenuVente($Articles,$venteID) {
 
         foreach ($Articles as $article) {
-
-            $response = Database::getDB()->prepare('INSERT INTO venteArticle SET Article_ID = :Article_ID , Vente_ID = :Vente_ID , PrixArticle = :PrixArticle');
+            global $db;
+            $response = $db->prepare('INSERT INTO venteArticle SET Article_ID = :Article_ID , Vente_ID = :Vente_ID , PrixArticle = :PrixArticle');
             $response->execute([':Article_ID' => $article->ID, ':Vente_ID' => $venteID, ':PrixArticle' => $article->Prix]);
             $response->closeCursor();
         }             
