@@ -66,7 +66,7 @@
                 </nav>
             </div>
             -->
-            <a href="<?=ROOT_PATH.'Ajouter_article//AfficherAjouter'?>" class='btn btn-primary'>Ajouter un nouvel article</a>
+            <a href="<?=ROOT_PATH.'articles//Ajouter'?>" class='btn btn-primary'>Ajouter un nouvel article</a>
         </section>
     </div>
 </main>

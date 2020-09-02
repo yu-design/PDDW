@@ -213,7 +213,7 @@ class articleAdmin{
                     if($accepterFichier){
                         $nomImage = $article->ID.'.'.$extensionUpload;
                         article::ajouterNouveauArticle($_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date'], $nomImage);
-                        header("Location: ".ROOT_PATH."afficher_article");
+                        header("Location: ".ROOT_PATH."articles//AdminArticle");
                         exit();
                     }else{
                         $messageErreur = "Une erreur s'est produite durant l'importation du fichier, veuillez réessayer ou inclure une autre image.";
@@ -227,7 +227,7 @@ class articleAdmin{
         }else{
             $nomImage = null;
             article::ajouterNouveauArticle($_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date'], $nomImage);
-            header("Location: ".ROOT_PATH."afficher_article");
+            header("Location: ".ROOT_PATH."articles//AdminArticle");
             exit();
         }
     }

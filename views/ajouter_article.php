@@ -3,7 +3,7 @@
 <div class="padding-top100"></div>
 Veuillez entrer les informations liées au nouvel article (Tous les champs sont obligatoires).
 
-<form action="<?=ROOT_PATH.'ajouter_article'?>" method="POST">
+<form action="<?=ROOT_PATH.'articles//Ajouter'?>" method="POST">
     <div class="form-group">
         <label for="idEAN">EAN :</label>
         <input type="text" class="form-control" id="idEAN" name="EAN">

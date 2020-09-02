@@ -56,7 +56,7 @@ Vous pouvez modifier les informations liées à l'article (Tous les champs sont 
     </div>
     <div>
         <label for="actif">Désactiver l'article</label>
-        <input type="checkbox" id="actif" name="actif" >
+        <input type="checkbox" id="actif" name="actif">
     </div>
     <button type="submit" class="btn btn-primary">Modifier article</button>
 </form>

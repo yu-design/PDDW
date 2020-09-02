@@ -21,11 +21,10 @@
             $article = article::getArticleParID(REQ_TYPE_ID);
             if(!empty($_POST)) {
                 if(!empty($_POST['EAN']) && !empty($_POST['ISBN']) && !empty($_POST['typeArticle_ID']) && !empty($_POST['titre']) && !empty($_POST['auteur']) && !empty($_POST['dessinateur']) && !empty($_POST['edition']) && !empty($_POST['collection']) && !empty($_POST['prix']) && !empty($_POST['date'])){
-                    $restultat = articleAdmin::ajouterNouveauArticleVerif($_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_id'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date']);
+                    $restultat = articleAdmin::ajouterNouveauArticleVerif($_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date'], $_FILES['couverture']);
                     $articles = article::getAll();
-                    include 'views/afficher_articles.php';    
                 }else{
-
+                    $messageErreur = "Au minimum une information est manquante, veuillez compléter le formulaire puis réessayer !";
                 }
             }else{
                 include 'views/ajouter_article.php';
@@ -37,7 +36,7 @@
     }
     
     else if(REQ_ACTION == "AdminArticle"){
-        $articles = article::getAll(REQ_TYPE_ID);
+        $articles = article::getAll();
         include 'views/afficher_articles.php';
     }
     

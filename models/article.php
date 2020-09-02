@@ -112,7 +112,7 @@ class Article{
         return $article;
     }
 
-    public static function ajouterNouveauArticle($EAN, $ISBN, $TypeArticle_id, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image){
+    public static function ajouterNouveauArticle($EAN, $ISBN, $TypeArticle_id, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image){   
         global $db;
         $reponse = $db->prepare('INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Parution, Image , Actif)
                                 VALUES (:EAN, :ISBN, :TypeArticle_id, :Titre, :Auteur, :Dessinateur, :Edition, :Collection, :Prix, :Parution, :Image, :Actif)');
