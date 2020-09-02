@@ -51,6 +51,8 @@ Vous pouvez modifier les informations liées à l'article (Tous les champs sont 
     </div>
     <div class="form-group">
         <label for="idcouverture">Couverture :</label>
+        <input type="hidden" name="MAX_FILE_SIZE" value="1048576">
+        <br/><input type="hidden" name="typeArticleImage" value="<?=$article->typeArticle_ID?>">
         <img class="card-img-top" src="../../public/images/articles/<?=$article->Image?>" alt="Card image cap" style="width: 16rem;">
         <input type="file" name="couverture" id="idcouverture">
     </div>

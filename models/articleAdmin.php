@@ -99,13 +99,9 @@ class articleAdmin{
                             $resultat = article::ajouterNouveauArticle($EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $nomImage);
                         }
                     }else{
-                        var_dump("erreur durant l'import du fichier");
-                        die();
                         return "Une erreur s'est produite durant l'importation du fichier, veuillez réessayer ou inclure une autre image.";
                     }
                 }else{
-                    var_dump("erreur durant l'import du fichier");
-                    die();
                     return "L'extension du fichier n'est pas supportée.<br/> Veuillez utiliser le format (jpg, jpeg, png ou gif).";
                 }
             }else{

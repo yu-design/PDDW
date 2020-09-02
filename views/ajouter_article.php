@@ -3,7 +3,7 @@
 <div class="padding-top100"></div>
 Veuillez entrer les informations liées au nouvel article (Tous les champs sont obligatoires).
 
-<form action="<?=ROOT_PATH.'articles//Ajouter'?>" method="POST">
+<form action="<?=ROOT_PATH.'articles//Ajouter'?>" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="idEAN">EAN :</label>
         <input type="text" class="form-control" id="idEAN" name="EAN">
@@ -52,7 +52,7 @@ Veuillez entrer les informations liées au nouvel article (Tous les champs sont 
     <div class="form-group">
         <!-- On limite le fichier à 100Ko -->
         <label for="idcouverture"></label>
-        <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+        <input type="hidden" name="MAX_FILE_SIZE" value="1048576">
         <input type="hidden" name="typeArticleImage" value="<?=$article->typeArticle_ID?>">
         Fichier : <input type="file" name="couverture" id="idcouverture">
     </div>
