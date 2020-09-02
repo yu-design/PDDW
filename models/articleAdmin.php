@@ -6,7 +6,7 @@ require_once 'article.php';
 
 class articleAdmin{
 
-    public static function modifierArticleVerif($ID, $EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $Actif) {
+    public function modifierArticleVerif($ID, $EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $Actif) {
         $typeModif = 'modifier';
         //$actif=(empty($Actif))?1:0;
         $article = article::getArticleParID($ID);
@@ -25,14 +25,14 @@ class articleAdmin{
                     if($ISBNStatus==true){
                         $ISBNValide = $ISBN;
                         // Traitement de l'ajout d'une image
-                        articleAdmin::chargerImage($ID,$EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $Actif, $typmeModif);
+                        articleAdmin::chargerImage($ID,$EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $Actif, $typeModif);
                     }else{
                         return "La référence ISBN ".$ISBN."existe déjà ...";
                     }
                 }else{
                     $ISBNValide = $article->ISBN;
                     // Traitement de l'ajout d'une image
-                    articleAdmin::chargerImage($ID,$EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $Actif, $typmeModif);
+                    articleAdmin::chargerImage($ID,$EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $Actif, $typeModif);
                 }
             }else{
                 return "La référence EAN ".$EAN."existe déjà ...";
@@ -45,41 +45,41 @@ class articleAdmin{
                 if($ISBNStatus==true){
                     $ISBNValide = $ISBN;
                     // Traitement de l'ajout d'une image
-                    articleAdmin::chargerImage($ID,$EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $Actif, $typmeModif);
+                    articleAdmin::chargerImage($ID,$EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $Actif, $typeModif);
                 }else{
                     return "La référence ISBN ".$ISBN."existe déjà ...";
                 }
             }else{
                 $ISBNValide = $article->ISBN;
                 // Traitement de l'ajout d'une image
-                $message = articleAdmin::chargerImage($ID,$EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $Actif, $typmeModif);
+                $message = articleAdmin::chargerImage($ID,$EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $Actif, $typeModif);
             }
         }
     }
 
-    public static function ajouterNouveauArticleVerif($EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image){
+    public function ajouterNouveauArticleVerif($EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image){
         $typeModif = 'ajouter';
-        $EAN = article::getArticleParEAN($EAN);
-        $ISBN = article::getArticleParISBN($ISBN);
+        $EANExist = article::getArticleParEAN($EAN);
+        $ISBNExist = article::getArticleParISBN($ISBN);
 
-        if($EAN){
-            return "La référence EAN ".$EAN." existe déjà...";
-        }else if($ISBN){
-            return "La référence ISBN' ".$ISBN." existe déjà...";
+        if($EANExist){
+            return "La référence EAN ".$EANExist->EAN." existe déjà...";
+        }else if($ISBNExist){
+            return "La référence ISBN' ".$EANExist->ISBN." existe déjà...";
         }else if(($Prix) < 0){
             return "Le prix ne peut pas être négatif !";
         }else if(($Parution) > date('Y-m-d')){
             return "La date ne peut pas être postérieur à la date courrante !";
+        }else{
             // Traitement de l'ajout d'une image
             $actif=1;
-            var_dump("coucou admin");
-            die();
-            return article::ajouterNouveauArticle($EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $nomImage);
-            //return articleAdmin::chargerImage($EAN->ID,$EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $actif, $typeModif);
+            //article::ajouterNouveauArticle($EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $nomImage);
+            $ID=null;
+            articleAdmin::chargerImage($ID,$EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $actif, $typeModif);
         }
     }
 
-    public static function chargerImage($ID, $EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $actif, $typeModif){
+    public function chargerImage($ID, $EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $actif, $typeModif){
         $article = article::getArticleParID($ID);
         if((isset($Image['couverture'])) && (!empty($Image['couverture']['name']))){
             $nomImage = $ID;
@@ -112,7 +112,7 @@ class articleAdmin{
                 return "L'image de couverture ne doit pas dépasser 1 Mo";
             }
         }else{
-            if($article->Image){
+            if(($article->Image) && ($typeModif=='ajouter')){
                 if($typeModif=="modifier"){
                     $resultat = article::modifierArticle($ID, $EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $nomImage, $actif);
 

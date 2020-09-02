@@ -1,0 +1,30 @@
+Difficultés rencontrées et non résolues :
+
+
+Bonjour monsieur,
+
+J'ai eu pas mal de bug à corriger, logique me direz-vous :D
+
+
+
+Je n'ai malheureusement pas réussi à débugger 2 points qui sont important dans mon code, un manque de temps probablement, le code est là mais il m'a manqué un peu de temps pour pouvoir le faire fonctionner.
+J'ai en fait développé mon projet jusqu'à hier 31-08 dans l'après-midi en mettant dans mes liens des session pour voyager dans le site ce qui n'était pas prévu, un détail, qui a toute son importance était que je n'avais pas tout à fait compris l'utilité des REQ ...
+
+
+J'ai entre temps modifié tout mon code, terminé des fonctionnalités majeures qui étaient demandées et ai tout fait pour résoudre les derniers soucis que j'avais mais sans succès :
+
+- La modification d'un utilisateur (profil + admin) ne fonctionne plus de puis le passage du code dans le modèle
+- L'ajout d'image fonctionnait et ne fonctionne plus non plus :(
+
+
+
+Hormis celà, tout le reste fonctionne et je suis fière du travail que je peux rendre malgré ces 2 points qui sont, je vous le concède de taille.
+
+Si vous voyez que d'ici à demain matin quand vous ferez le pull de mon projet, ils sont fonctionnels, vous serez maître de voir si vous prenez ces points en compte où non.
+
+
+
+Je vous souhaite une bonne rentrée (académique).
+
+
+Julien.
