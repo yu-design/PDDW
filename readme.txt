@@ -14,39 +14,54 @@ Version de PHP 5.2.0
 Version de base de données ; MariaDB 
 
 
-Modifications à effectuer dans index
-====================================
-Modification à la ligne permettant d'accéder au controlers via l'index : define('ROOT_PATH', "/PDDW/");
-
-
 Modifications à effectuer dans db.php
 =====================================
 Modifier le chemin d'accès à la DB
 Login actuel : ROOT
 Pass actuel : ""
 
+
+Modifications à effectuer dans index
+====================================
+Modification à la ligne permettant d'accéder au controlers via l'index : define('ROOT_PATH', "/PDDW/");
+Modifier la partie PDDW afin d'avoir accès via votre profil.
+
+
+Installation du serveur
+=======================
+Editer le fichier hosts dans "C:\Windows\System32\drivers\etc" :
+
+```
+127.0.0.1 localhost  
+::1 localhost  
+127.0.0.1 monprojet.test
+```
+
+
+Ajouter à la fin du fichier "httpd-vhosts.conf":  
+ajouter le chemin menant à votre propre dossier
+
+```
+<Directory "C:\xampp\htdocs\Sell_Instrument_ProjectWeb\project">  
+AllowOverride All  
+Options Indexes MultiViews FollowSymLinks  
+Require all granted  
+</Directory>  
+```
+
+```
+<VirtualHost *:80>  
+DocumentRoot C:\xampp\htdocs\Sell_Instrument_ProjectWeb\project  
+ServerName instru.test  
+</VirtualHost>  
+```
+
+url home : http://monprojet.test
+
+
+Profil utilisables sur le site
+==============================
 Type d'utilisateur existant pour effectuer des tests :
 Admin		Login : Admin		Pass : test
 Vendeur		Login : Vendeur1	Pass : test
 User		Login : Client2		Pass : test
-
-
-
-
-
-Reste à faire :
-===============
-- Modification utilisateur
-- Administration utilisateur
-- Tout le traitement article (Ajouter un article, modifier un article, mettre en inactif un article)
-	+ images,...
-- Effectuer une commande
-- Valider une commande
-- Modifier un prix et vérifier qu'il ne modifie pas la commande du client
-- panier
-- Statistique de vente
-
-Extra souhaité par moi :
-- Mode de paiement (paypal test)
-- Carte de fidélité
-- Favoris du client (Indiquer quand un article n'est plus disponible)
