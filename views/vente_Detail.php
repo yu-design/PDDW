@@ -20,7 +20,7 @@
 </dl>
 <?php foreach($vente->contenu as $contenu):?>
     <dl class="row">
-        <dt class="col-sm-4"><?=$contenu->Image?></dt>
+        <dt class="col-sm-4"><img src="../public/images/articles/<?=$contenu->Image?>" alt="essai" style="width: 12rem;"></dt>
         <dt class="col-sm-4"><?=$contenu->Titre?></dt>
         <dt class="col-sm-4"><?=$contenu->PrixArticle?> €</dt>
     </dl>
