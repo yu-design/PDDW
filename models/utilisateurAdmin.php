@@ -16,7 +16,7 @@ class utilisateurAdmin{
         if(!empty($_POST)){
             
             // Actif 1 = actif || 0 = inactif
-            $actif=(empty($actif))?1:0;
+            $actif=empty($actif)?0:1;
 
             // vérifier que la date est correct
             if(($dateNaissance) > date('Y-m-d')){

@@ -44,8 +44,8 @@
                 $messageErreur = $resultat;
 
             }else{
-                $utilisateurs = utilisateur::getAll();
                 $messageInfo = "Votre profil à bien été mis à jour";
+                $utilisateurs = utilisateur::getAll();
                 include 'views/afficher_utilisateurs.php';
             }
         }
