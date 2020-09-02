@@ -52,7 +52,7 @@
                             <input type="text" class="form-control" value="<?=$article->ID?>" name="panier" hidden>
                             <button type="submit" class="btn btn-primary">Ajouter au pannier</button>
                         </form>-->
-                        <a href="<?= ROOT_PATH ?>panier/<?= $article->id ?>/ajouter" class="btn btn-primary">Ajouter au panier<a>
+                        <a href="<?=ROOT_PATH.'panier/'.$article->ID.'/ajouter'?>" class="btn btn-primary">Ajouter au panier<a>
                     </div>
                 </div>
                 <?php endforeach ?>

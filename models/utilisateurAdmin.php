@@ -211,6 +211,7 @@ class utilisateurAdmin{
             }else{
                 $messageErreur="Votre pseudo ne peut pas être vide";
             }
+        }
     }
      
 
@@ -415,8 +416,6 @@ class utilisateurAdmin{
             $messageErreur="Le pseudo ne peut pas être vide";
         }
     }
-
-
     
 }    
 ?>

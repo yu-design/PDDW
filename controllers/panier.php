@@ -13,13 +13,10 @@
         }
         else
         {
-            var_dump(REQ_TYPE_ID);
-            die();
             Panier::ajouterAuPanier(REQ_TYPE_ID);
         }
     }
     elseif (REQ_ACTION =="supprimer"){
-        
         Panier::retirerDuPanier(REQ_TYPE_ID);
     }
 
@@ -28,7 +25,7 @@
     } 
     else {
 
-        $list = Panier::getPanier($_SESSION['panier']);
+        $articles = Panier::getPanier($_SESSION['panier']);
         include 'views/panier.php';
     }   
 

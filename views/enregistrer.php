@@ -3,7 +3,7 @@
 <div class="padding-top100"></div>
 Veuillez entrer vos coordonnées (Tous les champs sont obligatoires).
 
-<form action="<?=ROOT_PATH.'enregistrer'?>" method="POST">
+<form action="<?=ROOT_PATH.'nouveau_utilisateur'?>" method="POST">
     <div class="form-group">
         <label for="idlogin">Login:</label>
         <input type="text" class="form-control" id="idlogin" name="login">

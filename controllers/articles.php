@@ -21,10 +21,19 @@
             $article = article::getArticleParID(REQ_TYPE_ID);
             if(!empty($_POST)) {
                 if(!empty($_POST['EAN']) && !empty($_POST['ISBN']) && !empty($_POST['typeArticle_ID']) && !empty($_POST['titre']) && !empty($_POST['auteur']) && !empty($_POST['dessinateur']) && !empty($_POST['edition']) && !empty($_POST['collection']) && !empty($_POST['prix']) && !empty($_POST['date'])){
-                    $restultat = articleAdmin::ajouterNouveauArticleVerif($_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date'], $_FILES['couverture']);
-                    $articles = article::getAll();
+                    $resultat = articleAdmin::ajouterNouveauArticleVerif($_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date'], $_FILES);
+                    if($resultat){
+                        $articles = article::getAll();
+                        include 'views/afficher_articles.php';
+                    }else{
+                        var_dump('Oups, il y a une erreur !');
+                        die();
+                        $messageErreur = $resultat;
+                        include 'views/ajouter_article.php';
+                    }
                 }else{
                     $messageErreur = "Au minimum une information est manquante, veuillez compléter le formulaire puis réessayer !";
+                    include 'views/ajouter_article.php';
                 }
             }else{
                 include 'views/ajouter_article.php';
@@ -44,9 +53,16 @@
         if(!empty($_POST)){
             if(!empty($_POST['EAN']) && !empty($_POST['ISBN']) && !empty($_POST['typeArticle_ID']) && !empty($_POST['titre']) && !empty($_POST['auteur']) && !empty($_POST['dessinateur']) && !empty($_POST['edition']) && !empty($_POST['collection']) && !empty($_POST['prix']) && !empty($_POST['date'])){
                 $article = article::getArticleParID(REQ_TYPE_ID);
-                $resultat = articleAdmin::modifierArticleVerif($article->ID, $_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date'], $_FILES['couverture'], $_POST['actif']);
-                $articles = article::getAll(REQ_TYPE_ID);
-                include 'views/afficher_articles.php';
+                $actif = empty($_POST['actif'])?1:0;
+                $resultat = articleAdmin::modifierArticleVerif($article->ID, $_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date'], $_FILES['couverture'], $actif);
+                if(!$resultat){
+                    $articles = article::getAll();
+                    include 'views/afficher_articles.php';
+                }else{
+                    $messageErreur = $resultat;
+                    $article = article::getArticleParID(REQ_TYPE_ID);
+                    include 'views/gerer_article.php';    
+                }
             }else{
                 //Ici on va prévenir l'utilisateur qu'il manque quelque chose
                 $messageErreur = "Une information est manquante, veuillez réessayer !";

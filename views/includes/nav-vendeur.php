@@ -39,16 +39,13 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?=ROOT_PATH.'utilisateurs/'.$_SESSION['login']?>">Gestion profil</a>
-                            <a class="dropdown-item" href="<?=ROOT_PATH?>historique_commande">Historique de commande</a>
+                            <a class="dropdown-item" href="<?=ROOT_PATH?>vente">Historique de commande</a>
                             <div class="dropdown-divider"></div>
                             <span class="dropdown-item" >Administration</span>
                             <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>commandes">Valider commande</a>
                             <a class="dropdown-item sous-menu" href="<?=ROOT_PATH.'articles//AdminArticle'?>">Gestion article</a>
                             <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>utilisateurs">Gestion client</a>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?=ROOT_PATH?>debug">Debug</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0 space-search">

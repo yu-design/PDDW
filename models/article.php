@@ -99,7 +99,6 @@ class Article{
 
             die("Erreur : ".$ex->getMesage());
         }
-
     }
 
     public static function getarticleParEAN($EAN){

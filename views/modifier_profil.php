@@ -2,7 +2,7 @@
 
 <div class="padding-top100"></div>
 Veuillez entrer vos coordonnées (Les champs avec une <span class="colorRed">*</span> sont obligatoires).
-    <form action="<?=ROOT_PATH.'utilisateurs'.$utilisateur->ID."/ModifierProfil"?>" method="POST">
+    <form action="<?=ROOT_PATH.'utilisateurs/'.$utilisateur->ID."/ModifierProfil"?>" method="POST">
         <?php if($_SESSION['role']!=3): ?>
             <div class="form-group">
                 <label for="idlogin">Login <span class="colorRed">*</span> :</label>

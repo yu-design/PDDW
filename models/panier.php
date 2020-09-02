@@ -4,20 +4,20 @@ require 'article.php';
 class Panier {   
 
     public function getPanier($IDs){
-        $list = [];
+        $listeArticle = [];
         $total = 0;
         foreach ($IDs as $ID) {
          $article = article::getArticleParID($ID);
          $total += $article->Prix;
-         array_push($ID,$manga);
+         array_push($listeArticle,$article);
         }
         $_SESSION['totalPanier'] = $total;
-        return $list;
+        return $listeArticle;
     }
 
-    public function ajouterAuPanier($ID){
-        if(!in_array($ID,$_SESSION['panier'])){
-            array_push($_SESSION['panier'],$ID);
+    public function ajouterAuPanier($IDArticle){
+        if(!in_array($IDArticle,$_SESSION['panier'])){
+            array_push($_SESSION['panier'],$IDArticle);
 
         }
         else{
@@ -25,9 +25,9 @@ class Panier {
         }
     }
 
-    public function retirerDuPanier($ID){
+    public function retirerDuPanier($IDArticle){
         $panier = $_SESSION['panier'];
-        $_SESSION['panier'] = array_diff($panier,[$ID]);
+        $_SESSION['panier'] = array_diff($panier,[$IDArticle]);
     }
     
 }

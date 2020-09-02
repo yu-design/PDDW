@@ -6,23 +6,21 @@
                 <thead>
                     <tr>
                     <th scope="col">Titre</th>
-                    <th scope="col">Volume</th>
                     <th scope="col">Prix</th>
-                    <th scope="col">Action</th>
+                    <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-            <?php foreach($list as $ID):?>
+            <?php foreach($articles as $article):?>
                 <tr>
-                    <th scope="row"><?= $item->title ?></th>
-                    <td><?= $item->volume ?></td>
-                    <td><?= $item->prix ?></td>
+                    <th scope="row"><?= $article->Titre ?></th>
+                    <td><?= $article->Prix ?></td>
                     <td>
                         <div class="container">
                             <div class="row">
                             <div class="col">
                                 <a href="<?= ROOT_PATH.'article/'.$article->ID ?>" class="btn btn-primary">Voir le détail</a>
-                                <a href="<?=ROOT_PATH?>panier/<?=$article->ID?>/remove" class="btn btn-danger">Supprimer</a>
+                                <a href="<?=ROOT_PATH.'panier/'.$article->ID."/supprimer"?>" class="btn btn-danger">Supprimer</a>
                             </div>
                             </div>
                         </div>
@@ -36,7 +34,7 @@
             <div class="row">
                 <div class="col-6"> Total de votre panier : <?= $_SESSION['totalPanier']?>€ </div>
                     <div class="col-6">
-                        <a href="<?=ROOT_PATH?>commande//validerPanier" class="btn btn-primary">Valider le panier</a>
+                        <a href="<?=ROOT_PATH?>vente//validerPanier" class="btn btn-primary">Valider le panier</a>
                     </div>
                 </div>
             </div>

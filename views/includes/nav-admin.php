@@ -39,7 +39,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?=ROOT_PATH.'utilisateurs/'.$_SESSION['login']?>">Gestion profil</a>
-                            <a class="dropdown-item" href="<?=ROOT_PATH?>historique_commande">Historique de commande</a>
+                            <a class="dropdown-item" href="<?=ROOT_PATH?>vente">Historique de commande</a>
                             <div class="dropdown-divider"></div>
                             <span class="dropdown-item" >Administration</span>
                             <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>commandes">Valider commande</a>

@@ -34,7 +34,8 @@ CREATE TABLE vente(
 	DateTransaction DATETIME NOT NULL,
 	Utilisateur_ID INTEGER(11) NOT NULL REFERENCES utilisateur(ID),
 	Paiement_ID INTEGER(11) NOT NULL REFERENCES paiement(ID),
-	StatutVente INTEGER(11) NULL
+	StatutVente INTEGER(11) NULL,
+	MontantTotal FLOAT(11) NULL
 )ENGINE=INNODB;
 
 CREATE TABLE typeArticle(
@@ -96,11 +97,11 @@ INSERT INTO typeArticle (Nom) VALUES ('Comics');
 INSERT INTO typeArticle (Nom) VALUES ('Manga');
 INSERT INTO typeArticle (Nom) VALUES ('Roman');
 
-INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Image, Actif)
-VALUES ('9782505015932', '978-2-505-01593-2', 1, 'Naruto collector Tome 1','Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, '1.jpg',1);
+INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Parution, Image, Actif)
+VALUES ('9782505015932', '978-2-505-01593-2', 1, 'Naruto collector Tome 1', 'Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, '2012-04-06', '1.jpg',1);
 
-INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Image, Actif)
-VALUES ('9782505015949', '978-2-505-01594-9', 1, 'Naruto collector Tome 2', 'Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, '2.jpg',1);
+INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Parution, Image, Actif)
+VALUES ('9782505015949', '978-2-505-01594-9', 1, 'Naruto collector Tome 2', 'Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, '2012-04-06', '2.jpg',1);
 
-INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Image, Actif)
-VALUES ('9782505016045', '978-2-505-01604-5', 1, 'Naruto collector Tome 3', 'Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, '3.jpg',1);
+INSERT INTO article (EAN, ISBN, TypeArticle_id, Titre, Auteur, Dessinateur, Edition, Collection, Prix, Parution, Image, Actif)
+VALUES ('9782505016045', '978-2-505-01604-5', 1, 'Naruto collector Tome 3', 'Masashi Kishimoto', 'Masashi Kishimoto', 'KANA', 'SHONEN', 14.90, '2012-05-04', '3.jpg',1);

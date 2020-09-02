@@ -1,7 +1,7 @@
 <?php ob_start() ?>
     <div class="row">
         <div class="col">
-            <img class="card-img-top" src="public/images/articles/<?= $article->Image?>" alt="Card image cap" style="width: 18rem;">
+            <img class="card-img-top" src="../public/images/articles/<?= $article->Image?>" alt="Card image cap" style="width: 18rem;">
         </div>
         <div class="col">
             <h5><?=$article->Titre?></h5>
@@ -16,7 +16,7 @@
             <p></p>
             <a href=<?=ROOT_PATH."articles"?> class="btn btn-primary">Retour</a>
             <p></p>
-            <a href="<?=ROOT_PATH?>panier/<?= $article->ID ?>/add" class="btn btn-primary">Ajouter au panier<a>
+            <a href="<?=ROOT_PATH.'panier/'.$article->ID.'/ajouter'?>" class="btn btn-primary">Ajouter au panier<a>
         </div>
     </div>
 <?php

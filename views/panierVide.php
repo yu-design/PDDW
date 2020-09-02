@@ -1,7 +1,7 @@
 <?php ob_start() ?>
 
     <div>
-        Le panier est vide !
+        Votre panier est vide !
     </div>
 
 <?php

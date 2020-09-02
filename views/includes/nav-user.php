@@ -39,11 +39,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?=ROOT_PATH.'utilisateurs/'.$_SESSION['login']?>">Gestion profil</a>
-                            <a class="dropdown-item" href="<?=ROOT_PATH?>historique_commande">Historique de commande</a>
+                            <a class="dropdown-item" href="<?=ROOT_PATH.'vente'?>">Historique de commande</a>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?=ROOT_PATH?>debug">Debug</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0 space-search">
