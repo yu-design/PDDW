@@ -26,7 +26,7 @@
         $titre = "Contenu de la vente";
         
         $vente = Vente::getVenteParId(REQ_TYPE_ID);
-        $vente->Contenu = ContenuVente::getContenuVente($vente->ID);
+        $vente->contenu = ContenuVente::getContenuVente($vente->ID);
         include 'views/vente_Detail.php';
     }
 

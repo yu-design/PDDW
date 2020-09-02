@@ -18,15 +18,15 @@
         <?= $vente->Utilisateur_ID?>    
     <dt>
 </dl>
-<?php foreach($vente->contenus as $contenu):?>
+<?php foreach($vente->contenu as $contenu):?>
     <dl class="row">
+        <dt class="col-sm-4"><?=$contenu->imageDate?></dt>
         <dt class="col-sm-4"><?=$contenu->titre?></dt>
-        <dt class="col-sm-4">Volume: <?=$content->volume?></dt>
-        <dt class="col-sm-4"><?=$content->prixEnDate?>€</dt>
+        <dt class="col-sm-4"><?=$contenu->prixDate?>€</dt>
     </dl>
 <?php endforeach ?>
 
 <?php
-    $title="Detail de la commande numéro ".$commande->id;
+    $title="Detail de la commande numéro ".$vente->ID;
     $content= ob_get_clean();
 ?>
