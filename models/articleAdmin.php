@@ -81,20 +81,19 @@ class articleAdmin{
 
     public function chargerImage($ID, $EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $Image, $actif, $typeModif){
         $article = article::getArticleParID($ID);
-        if((isset($Image['couverture'])) && (!empty($Image['couverture']['name']))){
+        if((isset($Image)) && (!empty($Image['name']))){
             $nomImage = $ID;
             $tailleMaximale = 1048576;
             $extensionsValides = array('png', 'gif', 'jpg', 'jpeg');
-            if($Image['couverture']['size'] <= $tailleMaximale){
-                $extensionUpload = strtolower(substr(strrchr($Image['couverture']['name'],'.'), 1));
+            if($Image['size'] <= $tailleMaximale){
+                $extensionUpload = strtolower(substr(strrchr($Image['name'],'.'), 1));
                 if(in_array($extensionUpload,$extensionsValides)){
                     $chemin = "public/images/articles/".$ID.".".$extensionUpload;
-                    $accepterFichier = move_uploaded_file($Image['couverture']['tmp_name'], $chemin);
+                    $accepterFichier = move_uploaded_file($Image['tmp_name'], $chemin);
                     if($accepterFichier){
                         $nomImage = $ID.'.'.$extensionUpload;
                         if($typeModif=="modifier"){
                             $resultat = article::modifierArticle($ID, $EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $nomImage, $actif);
-
                         }else{
                             $resultat = article::ajouterNouveauArticle($EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $nomImage);
                         }
@@ -108,7 +107,8 @@ class articleAdmin{
                 return "L'image de couverture ne doit pas dépasser 1 Mo";
             }
         }else{
-            if(($article->Image) && ($typeModif=='ajouter')){
+            if(($article->Image) && ($typeModif=='modifier')){
+                $nomImage = $article->Image;
                 if($typeModif=="modifier"){
                     $resultat = article::modifierArticle($ID, $EAN, $ISBN, $TypeArticle_ID, $Titre, $Auteur, $Dessinateur, $Edition, $Collection, $Prix, $Parution, $nomImage, $actif);
 
