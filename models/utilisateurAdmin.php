@@ -6,9 +6,8 @@ require_once 'utilisateur.php';
 
 class utilisateurAdmin{
     
-    public static function modifierUtilisateurAdmin($id, $login, $prenom, $nom, $pseudo, $adresseMail, $password, $confirme_password, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $role, $actif){
+    public static function modifierUtilisateurAdmin($id, $login, $prenom, $nom, $pseudo, $adresseMail, $password, $confirme_password, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $actif){
         $utilisateur = utilisateur::getUtilisateurParLogin($_SESSION['login']);
-    
         $loginValide=null;
         $mailValide=null;
         $passwordValide=null;

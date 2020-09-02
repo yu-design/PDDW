@@ -14,14 +14,15 @@
         else{
             //S'il y a une formulaire, on peut faire une modification de son propre profil
             if(!empty($_POST)){
-                var_dump('Coucou modif');
-                die();
                 $utilisateur = utilisateur::getUtilisateurParID(REQ_TYPE_ID);
-                $resultat = utilisateurAdmin::modifierUtilisateurAdmin($utilisateur->ID, $_POST['login'], $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $POST['confirm_password'], $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_POST['role'], $_POST['actif']);
+                $actif = empty($_POST['actif'])?1:0;
+                $resultat = utilisateurAdmin::modifierUtilisateurAdmin($utilisateur->ID, $_POST['login'], $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $POST['confirm_password'], $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
                 if($resultat){
                     $messageErreur = $resultat;
+                    $utilisateur = utilisateur::getUtilisateurParID($_SESSION['id']);
+                    include 'views/modifier_profil.php';
                 }else{
-                    $utilisateur = utilisateur::getUtilisateurParID(REQ_TYPE_ID);
+                    $utilisateur = utilisateur::getUtilisateurParID($_SESSION['id']);
                     include 'views/modifier_profil.php';
                 }
             }
