@@ -23,13 +23,11 @@
                 if(!empty($_POST['EAN']) && !empty($_POST['ISBN']) && !empty($_POST['typeArticle_ID']) && !empty($_POST['titre']) && !empty($_POST['auteur']) && !empty($_POST['dessinateur']) && !empty($_POST['edition']) && !empty($_POST['collection']) && !empty($_POST['prix']) && !empty($_POST['date'])){
                     $resultat = articleAdmin::ajouterNouveauArticleVerif($_POST['EAN'], $_POST['ISBN'], $_POST['typeArticle_ID'], $_POST['titre'], $_POST['auteur'], $_POST['dessinateur'], $_POST['edition'], $_POST['collection'], $_POST['prix'], $_POST['date'], $_FILES);
                     if($resultat){
-                        $articles = article::getAll();
-                        include 'views/afficher_articles.php';
-                    }else{
-                        var_dump('Oups, il y a une erreur !');
-                        die();
                         $messageErreur = $resultat;
                         include 'views/ajouter_article.php';
+                    }else{
+                        $articles = article::getAll();
+                        include 'views/afficher_articles.php';
                     }
                 }else{
                     $messageErreur = "Au minimum une information est manquante, veuillez compléter le formulaire puis réessayer !";
