@@ -16,7 +16,7 @@
             if(!empty($_POST)){
                 $utilisateur = utilisateur::getUtilisateurParID(REQ_TYPE_ID);
                 $actif = empty($_POST['actif'])?1:0;
-                $resultat = utilisateurAdmin::modifierUtilisateurAdmin($utilisateur->ID, $_POST['login'], $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $POST['confirm_password'], $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
+                $resultat = utilisateurAdmin::modifierUtilisateurAdmin($utilisateur->ID, $_POST['login'], $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['confirm_password'], $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $actif);
                 if($resultat){
                     $messageErreur = $resultat;
                     $utilisateur = utilisateur::getUtilisateurParID($_SESSION['id']);
@@ -39,14 +39,14 @@
         if(!empty($_POST)){
             $utilisateur = utilisateur::getUtilisateurParID(REQ_TYPE_ID);
             $actif = empty($_POST['actif'])?1:0;
-            $resultat = utilisateurAdmin::modifierUtilisateurAdministrationAdmin($utilisateur->ID, $_POST['login'], $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $POST['confirm_password'], $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_POST['role'], $_POST['actif']);
+            $resultat = utilisateurAdmin::modifierUtilisateurAdministrationAdmin($utilisateur->ID, $_POST['login'], $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['confirm_password'], $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_POST['role'], $actif);
             if($resultat){
                 $messageErreur = $resultat;
 
             }else{
                 $utilisateurs = utilisateur::getAll();
                 $messageInfo = "Votre profil à bien été mis à jour";
-                include 'views/afficher_utilisateurs.php';    
+                include 'views/afficher_utilisateurs.php';
             }
         }
         // Afficher le profil de l'utilisateur (Admin)

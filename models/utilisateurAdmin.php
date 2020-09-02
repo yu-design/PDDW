@@ -48,10 +48,10 @@ class utilisateurAdmin{
                                             utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
                                             $messageInfo = "Votre profil a bien été mis à jour.";
                                         }else{
-                                            if($$password != $$confirme_password){
+                                            if($password != $confirme_password){
                                                 return "Votre mots de passe de confirmation ne correspond pas !";
                                             }else{
-                                                $passwordValide = $$password;
+                                                $passwordValide = $password;
                                                 // Enregistrement
                                                 $_SESSION['login']=$loginValide;
                                                 utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
@@ -71,22 +71,22 @@ class utilisateurAdmin{
                             }else{
                                 $mailValide=$utilisateur->AdresseMail;
                                 //vérifier que le mots de passe est correct
-                                if($$password && empty($$confirme_password)){
+                                if($password && empty($confirme_password)){
                                     return "La confirmation de mots de passe est manquante !";
-                                }else if(empty($$password) && $$confirme_password){
+                                }else if(empty($password) && $confirme_password){
                                     return "Le mots de passe est manquant !";
-                                }else if(!empty($$password) && !empty($$confirme_password)){
-                                    if(password_verify($$password,$utilisateur->Pass)){
+                                }else if(!empty($password) && !empty($confirme_password)){
+                                    if(password_verify($password,$utilisateur->Pass)){
                                         $passwordValide = $utilisateur->Pass;
                                         // Enregistrement
                                         $_SESSION['login']=$loginValide;
                                         utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
                                         $messageInfo = "Votre profil a bien été mis à jour.";
                                     }else{
-                                        if($$password != $$confirme_password){
+                                        if($password != $confirme_password){
                                             return "Votre mots de passe de confirmation ne correspond pas !";
                                         }else{
-                                            $passwordValide = $$password;
+                                            $passwordValide = $password;
                                             // Enregistrement
                                             $_SESSION['login']=$loginValide;
                                             utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
@@ -116,22 +116,22 @@ class utilisateurAdmin{
                             if($emailStatus==true){
                                 $mailValide = $_POST['email'];
                                 //vérifier que le mots de passe est correct
-                                if($$password && empty($$confirme_password)){
+                                if($password && empty($confirme_password)){
                                     return "La confirmation de mots de passe est manquante !";
-                                }else if(empty($$password) && $$confirme_password){
+                                }else if(empty($password) && $confirme_password){
                                     return "Le mots de passe est manquant !";
-                                }else if(!empty($$password) && !empty($$confirme_password)){
-                                    if(password_verify($$password,$utilisateur->Pass)){
+                                }else if(!empty($password) && !empty($confirme_password)){
+                                    if(password_verify($password,$utilisateur->Pass)){
                                         $passwordValide = $utilisateur->Pass;
                                         // Enregistrement
                                         $_SESSION['login']=$loginValide;
                                         utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
                                         $messageInfo = "Votre profil a bien été mis à jour.";
                                     }else{
-                                        if($$password != $$confirme_password){
+                                        if($password != $confirme_password){
                                             return "Votre mots de passe de confirmation ne correspond pas !";
                                         }else{
-                                            $passwordValide = $$password;
+                                            $passwordValide = $password;
                                             // Enregistrement
                                             $_SESSION['login']=$loginValide;
                                             utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
@@ -151,22 +151,22 @@ class utilisateurAdmin{
                         }else{
                             $mailValide=$utilisateur->AdresseMail;
                             //vérifier que le mots de passe est correct
-                            if($$password && empty($$confirme_password)){
+                            if($password && empty($confirme_password)){
                                 return "La confirmation de mots de passe est manquante !";
-                            }else if(empty($$password) && $$confirme_password){
+                            }else if(empty($password) && $confirme_password){
                                 return "Le mots de passe est manquant !";
-                            }else if(!empty($$password) && !empty($$confirme_password)){
-                                if(password_verify($$password,$utilisateur->Pass)){
+                            }else if(!empty($password) && !empty($confirme_password)){
+                                if(password_verify($password,$utilisateur->Pass)){
                                     $passwordValide = $utilisateur->Pass;
                                     // Enregistrement
                                     $_SESSION['login']=$loginValide;
                                     utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
                                     $messageInfo = "Votre profil a bien été mis à jour.";
                                 }else{
-                                    if($$password != $$confirme_password){
+                                    if($password != $confirme_password){
                                         return "Votre mots de passe de confirmation ne correspond pas !";
                                     }else{
-                                        $passwordValide = $$password;
+                                        $passwordValide = $password;
                                         // Enregistrement
                                         $_SESSION['login']=$loginValide;
                                         utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
