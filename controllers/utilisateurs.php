@@ -29,7 +29,7 @@
             // Afficher son profil
             else{
                 $titre = "Modifier son compte";
-                $utilisateur = utilisateur::getUtilisateurParLogin(REQ_TYPE_ID);
+                $utilisateur = utilisateur::getUtilisateurParID(REQ_TYPE_ID);    // Laisser Login à la place de ID
                 include 'views/modifier_profil.php';
             }
         }
@@ -38,11 +38,13 @@
         // S'il y a une formulaire, on peut faire une modification du profil de l'utilisateur
         if(!empty($_POST)){
             $utilisateur = utilisateur::getUtilisateurParID(REQ_TYPE_ID);
-            $actif = empty($_POST['actif'])?1:0;
+            $_SESSION['passModif'] = $utilisateur->Pass;
+            $actif = empty($_POST['actif'])?0:1;
             $resultat = utilisateurAdmin::modifierUtilisateurAdministrationAdmin($utilisateur->ID, $_POST['login'], $_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['confirm_password'], $_POST['anniversaire'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['numtel'], $_POST['role'], $actif);
             if($resultat){
                 $messageErreur = $resultat;
-
+                $utilisateur = utilisateur::getUtilisateurParID(REQ_TYPE_ID);
+                include 'views/modifier_profil.php';
             }else{
                 $messageInfo = "Votre profil à bien été mis à jour";
                 $utilisateurs = utilisateur::getAll();

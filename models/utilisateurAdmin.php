@@ -27,13 +27,11 @@ class utilisateurAdmin{
                     $loginStatus = empty(utilisateur::getUtilisateurParLogin($login))?true:false;
                     if($loginStatus==true){
                         $loginValide=$login;
-                        var_dump($_SESSION['id']);
-                        die();
                         // vérifier que l'email est correct
-                        if(!empty($email)){
-                            if($email != $utilisateur->AdresseMail){
-                                $emailStatus = empty(utilisateur::getUtilisateurParMail($email))?true:false;
-                                if($emailStatus==true){
+                        if(!empty($adresseMail)){
+                            if($adresseMail != $utilisateur->AdresseMail){
+                                $adresseMailStatus = empty(utilisateur::getUtilisateurParMail($adresseMail))?true:false;
+                                if($adresseMailStatus==true){
                                     $mailValide = $adresseMail;
                                     //vérifier que le mots de passe est correct
                                     if($password && empty($confirm_password)){
@@ -46,7 +44,6 @@ class utilisateurAdmin{
                                             // Enregistrement
                                             $_SESSION['login']=$loginValide;
                                             utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                            $messageInfo = "Votre profil a bien été mis à jour.";
                                         }else{
                                             if($password != $confirme_password){
                                                 return "Votre mots de passe de confirmation ne correspond pas !";
@@ -55,7 +52,6 @@ class utilisateurAdmin{
                                                 // Enregistrement
                                                 $_SESSION['login']=$loginValide;
                                                 utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                                $messageInfo = "Votre profil a bien été mis à jour.";
                                             }
                                         }
                                     }else{
@@ -63,7 +59,6 @@ class utilisateurAdmin{
                                         //Enregistrement
                                         $_SESSION['login']=$loginValide;
                                         utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                        $messageInfo = "Votre profil a bien été mis à jour.";
                                     }
                                 }else{
                                     return "Le mail ".$_POST['email']." existe déjà !";
@@ -81,7 +76,6 @@ class utilisateurAdmin{
                                         // Enregistrement
                                         $_SESSION['login']=$loginValide;
                                         utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                        $messageInfo = "Votre profil a bien été mis à jour.";
                                     }else{
                                         if($password != $confirme_password){
                                             return "Votre mots de passe de confirmation ne correspond pas !";
@@ -90,7 +84,6 @@ class utilisateurAdmin{
                                             // Enregistrement
                                             $_SESSION['login']=$loginValide;
                                             utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                            $messageInfo = "Votre profil a bien été mis à jour.";
                                         }
                                     }
                                 }else{
@@ -98,7 +91,6 @@ class utilisateurAdmin{
                                     //Enregistrement
                                     $_SESSION['login']=$loginValide;
                                     utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                    $messageInfo = "Votre profil a bien été mis à jour.";
                                 }
                             }
                         }else{
@@ -112,8 +104,8 @@ class utilisateurAdmin{
                     // vérifier que l'email est correct
                     if(!empty($_POST['email'])){
                         if($_POST['email'] != $utilisateur->AdresseMail){
-                            $emailStatus = empty(utilisateur::getUtilisateurParMail($_POST['email']))?true:false;
-                            if($emailStatus==true){
+                            $adresseMailStatus = empty(utilisateur::getUtilisateurParMail($_POST['email']))?true:false;
+                            if($adresseMailStatus==true){
                                 $mailValide = $_POST['email'];
                                 //vérifier que le mots de passe est correct
                                 if($password && empty($confirme_password)){
@@ -126,7 +118,6 @@ class utilisateurAdmin{
                                         // Enregistrement
                                         $_SESSION['login']=$loginValide;
                                         utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                        $messageInfo = "Votre profil a bien été mis à jour.";
                                     }else{
                                         if($password != $confirme_password){
                                             return "Votre mots de passe de confirmation ne correspond pas !";
@@ -135,7 +126,6 @@ class utilisateurAdmin{
                                             // Enregistrement
                                             $_SESSION['login']=$loginValide;
                                             utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                            $messageInfo = "Votre profil a bien été mis à jour.";
                                         }
                                     }
                                 }else{
@@ -143,7 +133,7 @@ class utilisateurAdmin{
                                     //Enregistrement
                                     $_SESSION['login']=$loginValide;
                                     utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                    $messageInfo = "Votre profil a bien été mis à jour.";
+                                    
                                 }
                             }else{
                                 return "Le mail ".$_POST['email']." existe déjà !";
@@ -161,7 +151,7 @@ class utilisateurAdmin{
                                     // Enregistrement
                                     $_SESSION['login']=$loginValide;
                                     utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                    $messageInfo = "Votre profil a bien été mis à jour.";
+                                    
                                 }else{
                                     if($password != $confirme_password){
                                         return "Votre mots de passe de confirmation ne correspond pas !";
@@ -170,7 +160,7 @@ class utilisateurAdmin{
                                         // Enregistrement
                                         $_SESSION['login']=$loginValide;
                                         utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                        $messageInfo = "Votre profil a bien été mis à jour.";
+                                        
                                     }
                                 }
                             }else{
@@ -178,7 +168,7 @@ class utilisateurAdmin{
                                 //Enregistrement
                                 $_SESSION['login']=$loginValide;
                                 utilisateur::modifierUtilisateur($_SESSION['id'], $loginValide, $prenom, $nom, $pseudo, $mailValide, $passwordValide, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $_SESSION['role'], $actif);
-                                $messageInfo = "Votre profil a bien été mis à jour.";
+                                
                             }
                         }
                     }else{
@@ -192,7 +182,7 @@ class utilisateurAdmin{
     }
      
 
-    public static function modifierUtilisateurAdministrationAdmin($id, $login, $prenom, $nom, $pseudo, $adresseMail, $password, $confirmPassword, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $role, $actif){
+    public static function modifierUtilisateurAdministrationAdmin($id, $login, $prenom, $nom, $pseudo, $adresseMail, $password, $confirmPassword, $dateNaissance, $adresse, $cp, $ville, $numTelephone, $roleUtilisateur, $actif){
         $utilisateur = utilisateur::getUtilisateurParID($id);
         // Actif 1 = actif || 0 = inactif
         $actif=(empty($actif))?1:0;
@@ -210,11 +200,11 @@ class utilisateurAdmin{
                 if($loginStatus==true){
                     $loginValide=$login;
                     // vérifier que l'email est correct
-                    if(!empty($email)){
-                        if($email != $utilisateur->AdresseMail){
-                            $emailStatus = empty(utilisateur::getUtilisateurParMail($email))?true:false;
-                            if($emailStatus==true){
-                                $mailValide = $email;
+                    if(!empty($adresseMail)){
+                        if($adresseMail != $utilisateur->AdresseMail){
+                            $adresseMailStatus = empty(utilisateur::getUtilisateurParMail($adresseMail))?true:false;
+                            if($adresseMailStatus==true){
+                                $mailValide = $adresseMail;
                                 //vérifier que le mots de passe est correct
                                 if($password && empty($confirmPassword)){
                                     return "La confirmation de mots de passe est manquante !";
@@ -246,7 +236,7 @@ class utilisateurAdmin{
                                     $messageInfo = "Le profil a bien été mis à jour.";
                                 }
                             }else{
-                                return "Le mail ".$email." existe déjà !";
+                                return "Le mail ".$adresseMail." existe déjà !";
                             }
                         }else{
                             $mailValide=$utilisateur->AdresseMail;
@@ -290,11 +280,11 @@ class utilisateurAdmin{
             }else{
                 $loginValide= $utilisateur->Login;
                 // vérifier que l'email est correct
-                if(!empty($email)){
-                    if($email != $utilisateur->AdresseMail){
-                        $emailStatus = empty(utilisateur::getUtilisateurParMail($email))?true:false;
-                        if($emailStatus==true){
-                            $mailValide = $email;
+                if(!empty($adresseMail)){
+                    if($adresseMail != $utilisateur->AdresseMail){
+                        $adresseMailStatus = empty(utilisateur::getUtilisateurParMail($adresseMail))?true:false;
+                        if($adresseMailStatus==true){
+                            $mailValide = $adresseMail;
                             //vérifier que le mots de passe est correct
                             if($password && empty($confirmPassword)){
                                 return "La confirmation de mots de passe est manquante !";
@@ -326,7 +316,7 @@ class utilisateurAdmin{
                                 $messageInfo = "Le profil a bien été mis à jour.";
                             }
                         }else{
-                            return "Le mail ".$email." existe déjà !";
+                            return "Le mail ".$adresseMail." existe déjà !";
                         }
                     }else{
                         $mailValide=$utilisateur->AdresseMail;
