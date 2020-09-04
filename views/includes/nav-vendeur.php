@@ -42,7 +42,7 @@
                             <a class="dropdown-item" href="<?=ROOT_PATH?>vente">Historique de commande</a>
                             <div class="dropdown-divider"></div>
                             <span class="dropdown-item" >Administration</span>
-                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>commandes">Valider commande</a>
+                            <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>vente//validerPanier">Valider commande</a>
                             <a class="dropdown-item sous-menu" href="<?=ROOT_PATH.'articles//AdminArticle'?>">Gestion article</a>
                             <a class="dropdown-item sous-menu" href="<?=ROOT_PATH?>utilisateurs">Gestion client</a>
                         </div>
